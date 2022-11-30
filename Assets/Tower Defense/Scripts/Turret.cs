@@ -47,6 +47,13 @@ namespace SpaceShooter
             {
                 m_RefireTimer -= Time.deltaTime;
             }
+            else
+            {
+                if (m_Mode == TurretMode.Auto)
+                {
+                    Fire();
+                }
+            }
         }
 
         #endregion
@@ -60,8 +67,12 @@ namespace SpaceShooter
         {
             if (m_TurretProperties == null) return;
             if (CanFire == false) return;
-            if (m_Ship.DrawEnergy(m_TurretProperties.EnergyUsage) == false) return;
-            if (m_Ship.DrawAmmo(m_TurretProperties.AmmoUsage) == false) return;
+
+            if (m_Ship != null)
+            {
+                if (m_Ship.DrawEnergy(m_TurretProperties.EnergyUsage) == false) return;
+                if (m_Ship.DrawAmmo(m_TurretProperties.AmmoUsage) == false) return;
+            }
 
             Projectile projectile = Instantiate(m_TurretProperties.ProjectilePrefab);
             projectile.transform.position = transform.position;
@@ -70,8 +81,8 @@ namespace SpaceShooter
 
             m_RefireTimer = m_TurretProperties.RateOfFire;
 
-            m_Ship.audio.clip = m_TurretProperties.LaunchSFX;
-            m_Ship.audio.Play();
+            //m_Ship.audio.clip = m_TurretProperties.LaunchSFX;
+            //m_Ship.audio.Play();
         }
 
         /// <summary>

@@ -165,7 +165,7 @@ namespace SpaceShooter
         {
             destructible.ApplyDamage(m_Damage);
 
-            if (m_Parent == Player.Instance.ActiveShip)
+            /*if (m_Parent == Player.Instance.ActiveShip)
             {
                 Player.Instance.AddScore(destructible.ScoreValue);
 
@@ -173,7 +173,7 @@ namespace SpaceShooter
                 {
                     Player.Instance.AddKill();
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -183,8 +183,8 @@ namespace SpaceShooter
         /// <param name="pos">Позиция</param>
         private void OnProjectileLifeEnd(Collider2D col, Vector2 pos)
         {
-            Instantiate(m_ImpactEffectPrefab, transform.position, Quaternion.identity);
-
+            //Instantiate(m_ImpactEffectPrefab, transform.position, Quaternion.identity);
+            
             Destroy(gameObject);
         }
 

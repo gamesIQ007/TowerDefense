@@ -8,7 +8,8 @@ namespace SpaceShooter
     public enum TurretMode
     {
         Primary,
-        Secondary
+        Secondary,
+        Auto
     }
 
     /// <summary>

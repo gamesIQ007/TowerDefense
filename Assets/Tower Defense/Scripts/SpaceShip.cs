@@ -277,7 +277,7 @@ namespace SpaceShooter
         {
             base.OnDeath();
 
-            GameObject effect = Instantiate(m_EffectPrefab, transform.position, Quaternion.identity);
+            //GameObject effect = Instantiate(m_EffectPrefab, transform.position, Quaternion.identity);
         }
     }
 }
