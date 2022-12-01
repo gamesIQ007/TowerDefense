@@ -1,4 +1,5 @@
 using UnityEngine;
+using TowerDefense;
 
 namespace SpaceShooter
 {
@@ -47,7 +48,7 @@ namespace SpaceShooter
         /// </summary>
         private float m_Timer;
 
-        [SerializeField] private AIPointPatrol m_MoveTarget;
+        [SerializeField] private Path m_Path;
 
         #region Unity Events
 
@@ -90,9 +91,9 @@ namespace SpaceShooter
                 GameObject e = Instantiate(m_EntityPrefabs[index].gameObject);
                 e.transform.position = m_Area.GetRandomInsideZone();
 
-                if (e.TryGetComponent<AIController>(out var ai))
+                if (e.TryGetComponent<TDPatrolController>(out var ai))
                 {
-                    ai.SetPatrolBehaviour(m_MoveTarget);
+                    ai.SetPath(m_Path);
                 }
             }
         }

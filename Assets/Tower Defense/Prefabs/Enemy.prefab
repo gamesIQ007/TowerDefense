@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 102951384737665536}
   - component: {fileID: 3630165614938674916}
   - component: {fileID: 6759490964667772115}
-  - component: {fileID: 2053864010178869182}
+  - component: {fileID: 6024229733013717308}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -227,15 +227,15 @@ MonoBehaviour:
   m_TeamId: 0
   m_ScoreValue: 0
   m_Mass: 1
-  m_Thrust: 10
+  m_Thrust: 1000
   m_Mobility: 1000
   m_MaxLinearVelocity: 1
-  m_MaxAngularVelocity: 1000
+  m_MaxAngularVelocity: 360
   m_Rigid: {fileID: 0}
   m_PreviewImage: {fileID: 0}
   audio: {fileID: 0}
   m_EffectPrefab: {fileID: 0}
---- !u!114 &2053864010178869182
+--- !u!114 &6024229733013717308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9209534977895216824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6981c46b5241fd45b0c072cc4ae7681, type: 3}
+  m_Script: {fileID: 11500000, guid: 894ef25cb91a4b449b5598ad10210f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AIBehaviour: 1
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 9209534978094798568}
   - component: {fileID: 9209534978094798566}
   - component: {fileID: 9209534978094798567}
+  - component: {fileID: 6669264006633066965}
   m_Layer: 0
   m_Name: VisualModel
   m_TagString: Untagged
@@ -359,3 +360,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6669264006633066965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209534978094798569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dc3e3e272a47b4194b00737ff09a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

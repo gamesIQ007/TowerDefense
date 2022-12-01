@@ -230,14 +230,7 @@ namespace SpaceShooter
 
                             if (isInsidePatrolZone)
                             {
-                                if (m_RandomizeDirectionTimer.IsFinished)
-                                {
-                                    Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
-
-                                    m_MovePosition = newPoint;
-
-                                    m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
-                                }
+                                GetNewPointPatrol();
                             }
                             else
                             {
@@ -393,6 +386,21 @@ namespace SpaceShooter
         {
             m_AIBehaviour = AIBehaviour.Patrol;
             m_PatrolPoint = point;
+        }
+
+        /// <summary>
+        /// ѕоиск следующей точки патрулировани€
+        /// </summary>
+        protected virtual void GetNewPointPatrol()
+        {
+            if (m_RandomizeDirectionTimer.IsFinished)
+            {
+                Vector2 newPoint = Random.onUnitSphere * m_PatrolPoint.Radius + m_PatrolPoint.transform.position;
+
+                m_MovePosition = newPoint;
+
+                m_RandomizeDirectionTimer.Start(m_RandomSelectMovePointTime);
+            }
         }
 
         /// <summary>
