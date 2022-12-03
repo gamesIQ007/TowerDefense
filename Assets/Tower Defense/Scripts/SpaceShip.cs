@@ -1,4 +1,5 @@
 using UnityEngine;
+using TowerDefense;
 
 namespace SpaceShooter
 {
@@ -228,6 +229,16 @@ namespace SpaceShooter
         {
             m_ThrustModifier = value;
             m_ThrustModifierTimer += time;
+        }
+
+        /// <summary>
+        /// Применить настройки из ScriptableObject к ассету
+        /// </summary>
+        /// <param name="asset">Настройки</param>
+        public new void Use(EnemyAsset asset)
+        {
+            m_MaxLinearVelocity = asset.moveSpeed;
+            base.Use(asset);
         }
 
         #endregion

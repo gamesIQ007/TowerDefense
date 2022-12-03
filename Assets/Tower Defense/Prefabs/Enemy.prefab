@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 3630165614938674916}
   - component: {fileID: 6759490964667772115}
   - component: {fileID: 6024229733013717308}
+  - component: {fileID: 1689435518999400371}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -257,6 +258,18 @@ MonoBehaviour:
   m_EvadeRayLength: 0
   m_PatrolType: 0
   m_PatrolRoutePoints: []
+--- !u!114 &1689435518999400371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209534977895216824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a7dc5b551c8594196f76853197c77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9209534978094798569
 GameObject:
   m_ObjectHideFlags: 0

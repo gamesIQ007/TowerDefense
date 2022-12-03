@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TowerDefense;
 
 namespace SpaceShooter
 {
@@ -116,6 +117,16 @@ namespace SpaceShooter
             m_TimeOfTemporaryIndestructible += time;
             m_Indestructible = true;
             m_EventOnEnableTemporaryIndestructible?.Invoke();
+        }
+
+        /// <summary>
+        /// Применить настройки из ScriptableObject к ассету
+        /// </summary>
+        /// <param name="asset">Настройки</param>
+        protected void Use(EnemyAsset asset)
+        {
+            m_HitPoints = asset.hp;
+            m_ScoreValue = asset.score;
         }
 
         #endregion
