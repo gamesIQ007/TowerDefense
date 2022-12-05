@@ -1059,8 +1059,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451110633}
-  - component: {fileID: 1451110634}
   - component: {fileID: 1451110632}
+  - component: {fileID: 1451110634}
   m_Layer: 0
   m_Name: EnemyCamp
   m_TagString: Untagged
@@ -1086,8 +1086,9 @@ MonoBehaviour:
   m_RespawnTime: 2
   m_EnemyPrefab: {fileID: 1689435518999400371, guid: 1c941e0a5fb321a44bcd15c0f139798e, type: 3}
   m_EnemyAssets:
-  - {fileID: 11400000, guid: 33a2d4a666992e945aecde75277a0f60, type: 2}
-  - {fileID: 11400000, guid: b9ef6ee1fe2d6dc46a75684396f5e2e1, type: 2}
+  - {fileID: 11400000, guid: e594c618a5e4dce429fb929d83108959, type: 2}
+  - {fileID: 11400000, guid: 476ff4d35847b0540871ec1a84d5521c, type: 2}
+  - {fileID: 11400000, guid: f68183ea274b9a1438443c8a4f21e837, type: 2}
   m_Path: {fileID: 601099174}
 --- !u!4 &1451110633
 Transform:
@@ -1125,8 +1126,8 @@ MonoBehaviour:
   m_RespawnTime: 3
   m_EnemyPrefab: {fileID: 1689435518999400371, guid: 1c941e0a5fb321a44bcd15c0f139798e, type: 3}
   m_EnemyAssets:
-  - {fileID: 11400000, guid: 33a2d4a666992e945aecde75277a0f60, type: 2}
-  - {fileID: 11400000, guid: b9ef6ee1fe2d6dc46a75684396f5e2e1, type: 2}
+  - {fileID: 11400000, guid: 466765f4d296dcd43950ee56aae8c492, type: 2}
+  - {fileID: 11400000, guid: 3c20955a1d8d91641a6cb4930a0c5047, type: 2}
   m_Path: {fileID: 1084807978}
 --- !u!1 &1592125664
 GameObject:
