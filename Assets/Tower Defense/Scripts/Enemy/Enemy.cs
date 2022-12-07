@@ -53,7 +53,7 @@ namespace TowerDefense
         /// </summary>
         public void DamagePlayer()
         {
-            Player.Instance.TakeDamage(m_Damage);
+            TDPlayer.Instance.ReduceLife(m_Damage);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TowerDefense
         /// </summary>
         public void GetPlayerGold()
         {
-            (Player.Instance as TDPlayer).ChangeGold(m_Gold);
+            TDPlayer.Instance.ChangeGold(m_Gold);
         }
     }
 

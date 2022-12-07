@@ -11,7 +11,7 @@ namespace SpaceShooter
         /// <summary>
         /// Количество жизней
         /// </summary>
-        [SerializeField] private int m_NumLives;
+        [SerializeField] protected int m_NumLives;
 
         /// <summary>
         /// Корабль игрока
@@ -67,7 +67,7 @@ namespace SpaceShooter
         /// Получить урон
         /// </summary>
         /// <param name="damage">Урон</param>
-        public void TakeDamage(int damage)
+        protected void TakeDamage(int damage)
         {
             m_NumLives -= damage;
 
