@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using SpaceShooter;
 
 namespace TowerDefense
@@ -17,6 +18,11 @@ namespace TowerDefense
         /// Индекс точки пути
         /// </summary>
         private int m_PathIndex;
+
+        /// <summary>
+        /// Событие при достижении конца маршрута
+        /// </summary>
+        [SerializeField] private UnityEvent OnEndPath;
 
         /// <summary>
         /// Задать путь
@@ -42,7 +48,7 @@ namespace TowerDefense
             }
             else
             {
-                // временно
+                OnEndPath.Invoke();
                 Destroy(gameObject);
             }
         }

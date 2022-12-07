@@ -53,12 +53,29 @@ namespace SpaceShooter
 
         private void Start()
         {
-            m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            if (m_Ship)
+            {
+                m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            }
 
             Respawn();
         }
 
         #endregion
+
+        /// <summary>
+        /// Получить урон
+        /// </summary>
+        /// <param name="damage">Урон</param>
+        public void TakeDamage(int damage)
+        {
+            m_NumLives -= damage;
+
+            if (m_NumLives <= 0)
+            {
+                LevelSequenceController.Instance.FinishCurrentLevel(false);
+            }
+        }
 
         /// <summary>
         /// Действие при смерти корабля

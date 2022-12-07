@@ -15,8 +15,10 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   spriteScale: {x: 3.7, y: 3.7}
   animations: {fileID: 9100000, guid: c36c1897f6364684daf07c8194b3e9f8, type: 2}
-  moveSpeed: 1.1
+  moveSpeed: 0.9
   hp: 10
+  damage: 1
   score: 50
   radius: 0.4
   colliderOffsetY: 0
+  gold: 10

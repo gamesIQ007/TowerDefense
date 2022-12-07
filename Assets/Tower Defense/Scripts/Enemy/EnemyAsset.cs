@@ -37,6 +37,11 @@ namespace TowerDefense
         public int hp = 10;
 
         /// <summary>
+        /// Урон
+        /// </summary>
+        public int damage = 1;
+
+        /// <summary>
         /// Очки
         /// </summary>
         public int score = 100;
@@ -50,5 +55,10 @@ namespace TowerDefense
         /// Смещение коллайдера
         /// </summary>
         public float colliderOffsetY = -0.1f;
+
+        /// <summary>
+        /// Золото
+        /// </summary>
+        public int gold = 10;
     }
 }

@@ -17,6 +17,8 @@ MonoBehaviour:
   animations: {fileID: 9100000, guid: b57048cdf8b3ddc42841a90df603e4b7, type: 2}
   moveSpeed: 1.25
   hp: 25
+  damage: 3
   score: 200
   radius: 0.45
   colliderOffsetY: 0
+  gold: 25

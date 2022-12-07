@@ -16,6 +16,16 @@ namespace TowerDefense
     public class Enemy : MonoBehaviour
     {
         /// <summary>
+        /// Урон
+        /// </summary>
+        [SerializeField] private int m_Damage;
+
+        /// <summary>
+        /// Золото
+        /// </summary>
+        [SerializeField] private int m_Gold;
+
+        /// <summary>
         /// Применить настройки из ScriptableObject к врагу
         /// </summary>
         /// <param name="asset">Настройки</param>
@@ -32,6 +42,26 @@ namespace TowerDefense
             CircleCollider2D col = transform.GetComponentInChildren<CircleCollider2D>();
             col.radius = asset.radius;
             col.offset = new Vector2 (0, asset.colliderOffsetY);
+
+            m_Damage = asset.damage;
+
+            m_Gold = asset.gold;
+        }
+
+        /// <summary>
+        /// Нанесение урона игроку
+        /// </summary>
+        public void DamagePlayer()
+        {
+            Player.Instance.TakeDamage(m_Damage);
+        }
+
+        /// <summary>
+        /// Добавление золота игроку
+        /// </summary>
+        public void GetPlayerGold()
+        {
+            (Player.Instance as TDPlayer).ChangeGold(m_Gold);
         }
     }
 
