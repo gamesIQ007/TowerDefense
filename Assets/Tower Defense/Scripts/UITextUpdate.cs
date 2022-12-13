@@ -36,17 +36,19 @@ namespace TowerDefense
         private void Awake()
         {
             m_Text = GetComponent<Text>();
+        }
 
+        private void Start()
+        {
             switch (m_UpdateSource)
             {
                 case UpdateSource.Gold:
-                    TDPlayer.OnGoldUpdate += UpdateText;
+                    TDPlayer.GoldUpdateSubscription(UpdateText);
                     break;
                 case UpdateSource.Life:
-                    TDPlayer.OnLifeUpdate += UpdateText;
+                    TDPlayer.LifeUpdateSubscription(UpdateText);
                     break;
             }
-            
         }
 
         /// <summary>

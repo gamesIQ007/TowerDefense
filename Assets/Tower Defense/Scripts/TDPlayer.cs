@@ -20,23 +20,28 @@ namespace TowerDefense
         /// <summary>
         /// Системное событие на изменение золота
         /// </summary>
-        public static event Action<int> OnGoldUpdate;
+        private static event Action<int> OnGoldUpdate;
+        public static void GoldUpdateSubscription(Action<int> action)
+        {
+            OnGoldUpdate += action;
+            action(Instance.m_Gold);
+        }
 
         /// <summary>
         /// Системное событие на изменение жизни
         /// </summary>
-        public static event Action<int> OnLifeUpdate;
+        private static event Action<int> OnLifeUpdate;
+        public static void LifeUpdateSubscription(Action<int> action)
+        {
+            OnLifeUpdate += action;
+            action(Instance.m_NumLives);
+        }
 
         /// <summary>
         /// Золото
         /// </summary>
-        [SerializeField] private int m_Gold;
-
-        private void Start()
-        {
-            OnGoldUpdate(m_Gold);
-            OnLifeUpdate(m_NumLives);
-        }
+        [SerializeField] private int m_Gold = 0;
+        public int Gold => m_Gold;
 
         /// <summary>
         /// Изменить количество золота
@@ -56,6 +61,27 @@ namespace TowerDefense
         {
             TakeDamage(damage);
             OnLifeUpdate(m_NumLives);
+        }
+
+        /// <summary>
+        /// Префаб башни
+        /// </summary>
+        [SerializeField] private Tower m_TowerPrefab;
+
+        /// <summary>
+        /// Попытка построить башню
+        /// </summary>
+        /// <param name="towerAsset">Ассет</param>
+        /// <param name="buildSite">Позиция</param>
+        public void TryBuild(TowerAsset towerAsset, Transform buildSite)
+        {
+            if (m_Gold >= towerAsset.goldCost)
+            {
+                ChangeGold(-towerAsset.goldCost);
+                Tower tower = Instantiate(m_TowerPrefab, buildSite.position, Quaternion.identity);
+                tower.GetComponentInChildren<SpriteRenderer>().sprite = towerAsset.sprite;
+                Destroy(buildSite.gameObject);
+            }
         }
     }
 }
