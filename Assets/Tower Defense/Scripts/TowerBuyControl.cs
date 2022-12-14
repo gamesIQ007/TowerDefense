@@ -27,7 +27,15 @@ namespace TowerDefense
         /// Положение башни
         /// </summary>
         [SerializeField] private Transform m_BuildSite;
-        public Transform BuildSite { set { m_BuildSite = value; } }
+
+        /// <summary>
+        /// Задать позицию места постройки
+        /// </summary>
+        /// <param name="position">Позиция</param>
+        public void SetBuildSite(Transform position)
+        {
+            m_BuildSite = position;
+        }
 
         private void Start()
         {
@@ -55,6 +63,7 @@ namespace TowerDefense
         public void Buy()
         {
             TDPlayer.Instance.TryBuild(m_TowerAsset, m_BuildSite);
+            BuildSite.HideControls();
         }
     }
 }
