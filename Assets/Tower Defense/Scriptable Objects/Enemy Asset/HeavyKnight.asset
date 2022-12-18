@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: HeavyKnight
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 4.5, y: 4.5}
+  spriteScale: {x: 3.5, y: 3.5}
   animations: {fileID: 9100000, guid: 9e0d9c298b14d9046a463c6d364cd7aa, type: 2}
   moveSpeed: 1
   hp: 20
+  damage: 1
   score: 200
-  radius: 0.5
+  radius: 0.35
   colliderOffsetY: 0
+  gold: 10

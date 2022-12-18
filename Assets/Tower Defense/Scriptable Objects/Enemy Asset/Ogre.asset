@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Ogre
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 4.5, y: 4.5}
+  spriteScale: {x: 3.5, y: 3.5}
   animations: {fileID: 9100000, guid: b57048cdf8b3ddc42841a90df603e4b7, type: 2}
   moveSpeed: 1.25
   hp: 25
   damage: 3
   score: 200
-  radius: 0.45
+  radius: 0.35
   colliderOffsetY: 0
   gold: 25

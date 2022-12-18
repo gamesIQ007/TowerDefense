@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Troll
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 5, y: 5}
+  spriteScale: {x: 4.5, y: 4.5}
   animations: {fileID: 9100000, guid: c0e6b5797ff07134d90671971a653950, type: 2}
   moveSpeed: 1
   hp: 50
   damage: 4
   score: 500
-  radius: 0.5
+  radius: 0.45
   colliderOffsetY: 0.1
   gold: 30

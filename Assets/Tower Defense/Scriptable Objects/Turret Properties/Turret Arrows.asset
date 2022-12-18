@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02fdf26b5ad198f47a8c51a4c23562dd, type: 3}
-  m_Name: Turret Properties
+  m_Name: Turret Arrows
   m_EditorClassIdentifier: 
   m_Mode: 2
   m_ProjectilePrefab: {fileID: 588850349923926705, guid: 9d3d2a23821c49c45ab4e8fa9aef9d1d, type: 3}

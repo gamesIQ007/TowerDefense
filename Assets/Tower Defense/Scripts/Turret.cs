@@ -91,7 +91,7 @@ namespace SpaceShooter
         /// <param name="props"></param>
         public void AssignLoadout(TurretProperties props)
         {
-            if (m_Mode != props.Mode) return;
+            //if (m_Mode != props.Mode) return;
 
             m_RefireTimer = 0;
 

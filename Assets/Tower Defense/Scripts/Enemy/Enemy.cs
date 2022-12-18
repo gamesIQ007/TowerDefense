@@ -26,6 +26,11 @@ namespace TowerDefense
         [SerializeField] private int m_Gold;
 
         /// <summary>
+        /// Состояние
+        /// </summary>
+        private EnemyState state;
+
+        /// <summary>
         /// Применить настройки из ScriptableObject к врагу
         /// </summary>
         /// <param name="asset">Настройки</param>

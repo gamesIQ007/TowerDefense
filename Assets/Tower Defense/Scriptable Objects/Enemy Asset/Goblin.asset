@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 3.5, y: 3.5}
+  spriteScale: {x: 2, y: 2}
   animations: {fileID: 9100000, guid: d2f5ecd9ac6b5084d88ce838ff65155e, type: 2}
   moveSpeed: 2
   hp: 5
   damage: 1
   score: 50
-  radius: 0.3
+  radius: 0.2
   colliderOffsetY: 0
   gold: 15

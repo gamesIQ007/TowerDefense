@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 3.5, y: 3.5}
+  spriteScale: {x: 2.5, y: 2.5}
   animations: {fileID: 9100000, guid: 188c201efd67df74fb9c97856758d54b, type: 2}
   moveSpeed: 2
   hp: 10
+  damage: 1
   score: 100
-  radius: 0.3
+  radius: 0.25
   colliderOffsetY: 0.1
+  gold: 10

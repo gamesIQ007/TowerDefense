@@ -1,4 +1,5 @@
 using UnityEngine;
+using SpaceShooter;
 
 namespace TowerDefense
 {
@@ -22,5 +23,10 @@ namespace TowerDefense
         /// Спрайт
         /// </summary>
         public Sprite sprite;
+
+        /// <summary>
+        /// Настройки турели
+        /// </summary>
+        public TurretProperties turret;
     }
 }

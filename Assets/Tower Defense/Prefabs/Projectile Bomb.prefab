@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 588850349690426148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 588850349923926707}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 608910b210324d04fb0662feb7f3c492, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31188ef1903363d40a11dc9fe3a7fbdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 588850349923926706}
   - component: {fileID: 588850349923926705}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.0001
+  m_Radius: 1.38
 --- !u!114 &588850349923926705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +146,10 @@ MonoBehaviour:
   m_Nickname: 
   m_Velocity: 5
   m_LifeTime: 10
-  m_Damage: 10
-  m_ImpactEffectPrefab: {fileID: 0}
+  m_Damage: 20
+  m_ImpactEffectPrefab: {fileID: 1290499139311393724, guid: b6b077c7839691e42a912acc4c1833d5, type: 3}
   m_IsHoming: 0
-  m_IsAreaDamage: 0
-  m_Radius: 0
+  m_IsAreaDamage: 1
+  m_Radius: 1.38
+  m_State: 0
+  m_StateTime: 0

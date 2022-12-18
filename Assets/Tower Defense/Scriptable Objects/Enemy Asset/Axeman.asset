@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Axeman
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  spriteScale: {x: 4, y: 4}
+  spriteScale: {x: 2.5, y: 2.5}
   animations: {fileID: 9100000, guid: cfc38cd59fdd8854998525d9651863d3, type: 2}
   moveSpeed: 1.5
-  hp: 15
+  hp: 10
   damage: 2
   score: 100
-  radius: 0.5
+  radius: 0.25
   colliderOffsetY: 0
   gold: 20

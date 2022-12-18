@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TowerDefense;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -68,6 +69,17 @@ namespace SpaceShooter
         /// Список дестрактиблов в зоне поражения
         /// </summary>
         List<Destructible> m_DestructiblesInArea;
+
+        [Header("Effect")]
+        /// <summary>
+        /// Накладываемый эффект
+        /// </summary>
+        [SerializeField] private EnemyState m_State;
+
+        /// <summary>
+        /// Время эффекта
+        /// </summary>
+        [SerializeField] private int m_StateTime;
 
         #region Unity Events
 
@@ -165,6 +177,11 @@ namespace SpaceShooter
         {
             destructible.ApplyDamage(m_Damage);
 
+            if (m_State == EnemyState.Freezed)
+            {
+                destructible.GetComponent<SpaceShip>().ChangeState(m_StateTime);
+            }
+
             /*if (m_Parent == Player.Instance.ActiveShip)
             {
                 Player.Instance.AddScore(destructible.ScoreValue);
@@ -183,7 +200,10 @@ namespace SpaceShooter
         /// <param name="pos">Позиция</param>
         private void OnProjectileLifeEnd(Collider2D col, Vector2 pos)
         {
-            //Instantiate(m_ImpactEffectPrefab, transform.position, Quaternion.identity);
+            if (m_ImpactEffectPrefab)
+            {
+                Instantiate(m_ImpactEffectPrefab, transform.position, Quaternion.identity);
+            }
             
             Destroy(gameObject);
         }

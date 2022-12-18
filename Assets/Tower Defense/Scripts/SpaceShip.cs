@@ -93,6 +93,11 @@ namespace SpaceShooter
         public Sprite PreviewImage => m_PreviewImage;
 
         /// <summary>
+        /// Изображение
+        /// </summary>
+        private SpriteRenderer sprite;
+
+        /// <summary>
         /// Звуки корабля (стрельбы)
         /// </summary>
         [HideInInspector] public new AudioSource audio;
@@ -117,11 +122,23 @@ namespace SpaceShooter
             m_ThrustModifier = 1;
 
             audio = GetComponent<AudioSource>();
+
+            sprite = GetComponentInChildren<SpriteRenderer>();
+            m_NormalStateColor = sprite.color;
+
+            InitTimers();
         }
 
         protected override void Update()
         {
             base.Update();
+
+            UpdateTimers();
+
+            if (stateTimer.IsFinished && state == EnemyState.Freezed)
+            {
+                RemoveState();
+            }
 
             if (m_ThrustModifierTimer <= 0) return;
 
@@ -135,7 +152,10 @@ namespace SpaceShooter
 
         private void FixedUpdate()
         {
-            UpdateRigitBody();
+            if (state != EnemyState.Freezed)
+            {
+                UpdateRigitBody();
+            }
 
             //UpdateEnergyRegen();
         }
@@ -229,6 +249,7 @@ namespace SpaceShooter
         {
             m_ThrustModifier = value;
             m_ThrustModifierTimer += time;
+            sprite.color = m_FreezedStateColor;
         }
 
         /// <summary>
@@ -282,6 +303,7 @@ namespace SpaceShooter
         {
             m_ThrustModifier = 1;
             m_ThrustModifierTimer = 0;
+            sprite.color = m_NormalStateColor;
         }
 
         protected override void OnDeath()
@@ -290,5 +312,65 @@ namespace SpaceShooter
 
             //GameObject effect = Instantiate(m_EffectPrefab, transform.position, Quaternion.identity);
         }
+
+        #region State
+
+        /// <summary>
+        /// Статус
+        /// </summary>
+        private EnemyState state;
+
+        /// <summary>
+        /// Цвет при статусе заморозки
+        /// </summary>
+        [SerializeField] private Color m_FreezedStateColor;
+
+        /// <summary>
+        /// Нормальный цвет
+        /// </summary>
+        [SerializeField] private Color m_NormalStateColor;
+
+        private Timer stateTimer;
+
+        /// <summary>
+        /// Включение заморозки
+        /// </summary>
+        /// <param name="value">Величина модификатора толкающей силы</param>
+        /// <param name="time">Время действия модификатора толкающей силы</param>
+        public void ChangeState(float time)
+        {
+            state = EnemyState.Freezed;
+            stateTimer = new Timer(time);
+            sprite.color = m_FreezedStateColor;
+            m_Rigid.velocity = new Vector2(0, 0);
+            m_Rigid.angularVelocity = 0;
+            m_Rigid.isKinematic = true;
+        }
+
+        /// <summary>
+        /// Отключение заморозки
+        /// </summary>
+        private void RemoveState()
+        {
+            state = EnemyState.None;
+            sprite.color = m_NormalStateColor;
+            m_Rigid.isKinematic = false;
+        }
+
+        #endregion
+
+        #region Timers
+
+        private void InitTimers()
+        {
+            stateTimer = new Timer(0);
+        }
+
+        private void UpdateTimers()
+        {
+            stateTimer.RemoveTime(Time.deltaTime);
+        }
+
+        #endregion
     }
 }
