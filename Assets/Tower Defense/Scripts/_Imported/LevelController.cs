@@ -28,7 +28,7 @@ namespace SpaceShooter
         /// <summary>
         /// Ивент при завершении уровня
         /// </summary>
-        [SerializeField] private UnityEvent m_LevelCompleted;
+        [SerializeField] protected UnityEvent m_LevelCompleted;
 
         /// <summary>
         /// Массив условий завершения уровня
@@ -48,7 +48,7 @@ namespace SpaceShooter
 
         #region UnityEvents
 
-        private void Start()
+        protected void Start()
         {
             m_Conditions = GetComponentsInChildren<ILevelCondition>();
         }

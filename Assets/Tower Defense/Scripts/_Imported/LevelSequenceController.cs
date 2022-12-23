@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 namespace SpaceShooter
 {
     /// <summary>
-    ///  онтроллер последовательности уровней
+    ///  онтроллер последовательности уровней. ƒолжен быть в главном меню с пометкой "Ќе уничтожать при загрузке"
     /// </summary>
     public class LevelSequenceController : SingletonBase<LevelSequenceController>
     {
@@ -93,10 +93,11 @@ namespace SpaceShooter
         public void FinishCurrentLevel(bool success)
         {
             LastLevelResult = success;
+            
+            //CalculateLevelStatistic();
 
-            CalculateLevelStatistic();
-
-            ResultPanelController.Instance.ShowResult(LevelStatistics, success);
+            //ResultPanelController.Instance.ShowResult(LevelStatistics, success);
+            LevelResultController.Instance.ShowResult(success);
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace SpaceShooter
         /// </summary>
         public void AdvanceLevel()
         {
-            LevelStatistics.Reset();
+            //LevelStatistics.Reset();
 
             CurrentLevel++;
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,8 @@ namespace SpaceShooter
         /// Количество жизней
         /// </summary>
         [SerializeField] protected int m_NumLives;
+
+        public event Action OnPlayerDead;
 
         /// <summary>
         /// Корабль игрока
@@ -73,8 +76,8 @@ namespace SpaceShooter
 
             if (m_NumLives <= 0)
             {
-                //LevelSequenceController.Instance.FinishCurrentLevel(false);
-                LevelSequenceController.Instance.RestartLevel();
+                m_NumLives = 0;
+                OnPlayerDead?.Invoke();
             }
         }
 
