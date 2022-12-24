@@ -9,6 +9,8 @@ namespace TowerDefense
     /// </summary>
     public class MapCompletion : SingletonBase<MapCompletion>
     {
+        const string FILENAME = "completion.dat";
+
         /// <summary>
         /// Внутренний класс данных о результатах завершения эпизодов
         /// </summary>
@@ -45,6 +47,12 @@ namespace TowerDefense
             }
         }
 
+        private new void Awake()
+        {
+            base.Awake();
+            Saver<EpisodeScore[]>.TryLoad(FILENAME, ref m_CompletionData);
+        }
+
         /// <summary>
         /// Сохранение результатов эпизода
         /// </summary>
@@ -68,6 +76,7 @@ namespace TowerDefense
                     if (levelScore > item.score)
                     {
                         item.score = levelScore;
+                        Saver<EpisodeScore[]>.Save(FILENAME, m_CompletionData);
                     }
                 }
             }
