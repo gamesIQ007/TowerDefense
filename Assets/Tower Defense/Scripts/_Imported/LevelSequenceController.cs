@@ -11,7 +11,7 @@ namespace SpaceShooter
         /// <summary>
         /// Имя сцены с главным меню
         /// </summary>
-        public static string MainMenuSceneNickname = "main_menu";
+        public static string MainMenuSceneNickname = "LevelMap";
 
         /// <summary>
         /// Время прохождения, за которое дадут бонусные очки

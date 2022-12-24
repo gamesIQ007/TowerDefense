@@ -8,6 +8,11 @@ namespace TowerDefense
     /// </summary>
     public class TDLevelController : LevelController
     {
+        /// <summary>
+        /// Временная публичная переменная с очками прохождения уровня
+        /// </summary>
+        public int m_LevelScore => 1;
+
         private new void Start()
         {
             base.Start();
@@ -17,7 +22,11 @@ namespace TowerDefense
                 StopLevelActivity();
                 LevelResultController.Instance.ShowResult(false);
             };
-            m_LevelCompleted.AddListener(StopLevelActivity);
+            m_LevelCompleted.AddListener(() =>
+            {
+                StopLevelActivity();
+                MapCompletion.SaveEpisodeResult(m_LevelScore);
+            });
         }
 
         /// <summary>
