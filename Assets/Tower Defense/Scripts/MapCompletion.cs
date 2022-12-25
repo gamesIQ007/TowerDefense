@@ -9,7 +9,7 @@ namespace TowerDefense
     /// </summary>
     public class MapCompletion : SingletonBase<MapCompletion>
     {
-        const string FILENAME = "completion.dat";
+        public const string FILENAME = "completion.dat";
 
         /// <summary>
         /// Внутренний класс данных о результатах завершения эпизодов
