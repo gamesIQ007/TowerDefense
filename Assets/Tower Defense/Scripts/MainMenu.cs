@@ -14,6 +14,8 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private Button m_ContinueButton;
 
+        [SerializeField] private GameObject m_ConfirmationPanel;
+
         private void Start()
         {
             m_ContinueButton.interactable = FileHandler.HasFile(MapCompletion.FILENAME);
@@ -24,8 +26,14 @@ namespace TowerDefense
         /// </summary>
         public void NewGame()
         {
-            FileHandler.Reset(MapCompletion.FILENAME);
-            SceneManager.LoadScene(1);
+            if (FileHandler.HasFile(MapCompletion.FILENAME))
+            {
+                ShowConfirmationPanel();
+            }
+            else
+            {
+                StartNewGame();
+            }
         }
 
         /// <summary>
@@ -42,6 +50,31 @@ namespace TowerDefense
         public void Quit()
         {
             Application.Quit();
+        }
+
+        /// <summary>
+        /// Отобразить окно подтверждения перезаписи файла сохранения
+        /// </summary>
+        public void ShowConfirmationPanel()
+        {
+            m_ConfirmationPanel.SetActive(true);
+        }
+
+        /// <summary>
+        /// Скрыть окно подтверждения перезаписи файла сохранения
+        /// </summary>
+        public void HideConfirmationPanel()
+        {
+            m_ConfirmationPanel.SetActive(false);
+        }
+
+        /// <summary>
+        /// Начать новую игру
+        /// </summary>
+        public void StartNewGame()
+        {
+            FileHandler.Reset(MapCompletion.FILENAME);
+            SceneManager.LoadScene(1);
         }
     }
 }

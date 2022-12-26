@@ -26,6 +26,11 @@ namespace TowerDefense
             OnGoldUpdate += action;
             action(Instance.m_Gold);
         }
+        public static void GoldUpdateUnsubscribe(Action<int> action)
+        {
+            OnGoldUpdate -= action;
+            action(Instance.m_Gold);
+        }
 
         /// <summary>
         /// Системное событие на изменение жизни
@@ -34,6 +39,11 @@ namespace TowerDefense
         public static void LifeUpdateSubscription(Action<int> action)
         {
             OnLifeUpdate += action;
+            action(Instance.m_NumLives);
+        }
+        public static void LifeUpdateUnsubscribe(Action<int> action)
+        {
+            OnLifeUpdate -= action;
             action(Instance.m_NumLives);
         }
 

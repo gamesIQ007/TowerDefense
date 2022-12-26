@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5809d17dca22841b57ab7f1769dfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TimeLimit: 5
+  m_TimeLimit: 60
 --- !u!1 &1178949471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
-  m_NumLives: 30
+  m_NumLives: 10
   m_Ship: {fileID: 0}
   m_PlayerShipPrefab: {fileID: 0}
   m_EventScoreChanged:

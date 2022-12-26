@@ -51,6 +51,19 @@ namespace TowerDefense
             }
         }
 
+        private void OnDestroy()
+        {
+            switch (m_UpdateSource)
+            {
+                case UpdateSource.Gold:
+                    TDPlayer.GoldUpdateUnsubscribe(UpdateText);
+                    break;
+                case UpdateSource.Life:
+                    TDPlayer.LifeUpdateUnsubscribe(UpdateText);
+                    break;
+            }
+        }
+
         /// <summary>
         /// Обновить текст
         /// </summary>
