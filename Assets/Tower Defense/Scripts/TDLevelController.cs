@@ -9,9 +9,9 @@ namespace TowerDefense
     public class TDLevelController : LevelController
     {
         /// <summary>
-        /// Временная публичная переменная с очками прохождения уровня
+        /// Очки прохождения уровня
         /// </summary>
-        public int m_LevelScore => 1;
+        private int m_LevelScore = 3;
 
         private new void Start()
         {
@@ -22,11 +22,27 @@ namespace TowerDefense
                 StopLevelActivity();
                 LevelResultController.Instance.ShowResult(false);
             };
+
+            m_ReferenceTime += Time.time;
             m_LevelCompleted.AddListener(() =>
             {
                 StopLevelActivity();
+
+                if (m_ReferenceTime < Time.time)
+                {
+                    m_LevelScore--;
+                }
+                
                 MapCompletion.SaveEpisodeResult(m_LevelScore);
             });
+
+            // Локальная функция, чисто для отслеживания изменения количества жизней, одноразовая подписка
+            void LifeScoreChange(int _)
+            {
+                m_LevelScore--;
+                TDPlayer.OnLifeUpdate -= LifeScoreChange;
+            }
+            TDPlayer.OnLifeUpdate += LifeScoreChange;
         }
 
         /// <summary>

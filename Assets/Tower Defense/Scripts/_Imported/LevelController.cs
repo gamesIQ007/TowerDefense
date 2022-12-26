@@ -22,8 +22,8 @@ namespace SpaceShooter
         /// <summary>
         /// Требуемое время прохождения уровня
         /// </summary>
-        [SerializeField] private int m_ReferenceTime;
-        public int ReferenceTime => m_ReferenceTime;
+        [SerializeField] protected float m_ReferenceTime;
+        public float ReferenceTime => m_ReferenceTime;
 
         /// <summary>
         /// Ивент при завершении уровня

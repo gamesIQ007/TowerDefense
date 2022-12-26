@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5809d17dca22841b57ab7f1769dfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TimeLimit: 60
+  m_TimeLimit: 20
 --- !u!1 &1300420602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_EnemyAssets:
   - {fileID: 11400000, guid: e594c618a5e4dce429fb929d83108959, type: 2}
   - {fileID: 11400000, guid: 3c20955a1d8d91641a6cb4930a0c5047, type: 2}
-  m_Path: {fileID: 601099174}
+  m_Path: {fileID: 1084807978}
 --- !u!4 &1451110633
 Transform:
   m_ObjectHideFlags: 0
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
-  m_NumLives: 10
+  m_NumLives: 999
   m_Ship: {fileID: 0}
   m_PlayerShipPrefab: {fileID: 0}
   m_EventScoreChanged:
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
-  m_ReferenceTime: 0
+  m_ReferenceTime: 2
   m_LevelCompleted:
     m_PersistentCalls:
       m_Calls: []

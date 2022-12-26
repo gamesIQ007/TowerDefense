@@ -15,9 +15,14 @@ namespace TowerDefense
         private Episode m_Episode;
 
         /// <summary>
-        /// Отображаемый текст
+        /// Панель результата
         /// </summary>
-        [SerializeField] private Text text;
+        [SerializeField] private RectTransform m_ResultPanel;
+
+        /// <summary>
+        /// Изображения результата прохождения уровня
+        /// </summary>
+        [SerializeField] private Image[] m_ResultImages;
 
         /// <summary>
         /// Загрузить уровень
@@ -35,7 +40,11 @@ namespace TowerDefense
         public void SetLevelData(Episode episode, int score)
         {
             m_Episode = episode;
-            text.text = $"{score}/3";
+            m_ResultPanel.gameObject.SetActive(score > 0);
+            for (int i = 0; i < score; i++)
+            {
+                m_ResultImages[i].color = Color.white;
+            }            
         }
     }
 }

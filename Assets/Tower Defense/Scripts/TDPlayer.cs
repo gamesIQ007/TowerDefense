@@ -35,7 +35,7 @@ namespace TowerDefense
         /// <summary>
         /// Системное событие на изменение жизни
         /// </summary>
-        private static event Action<int> OnLifeUpdate;
+        public static event Action<int> OnLifeUpdate;
         public static void LifeUpdateSubscription(Action<int> action)
         {
             OnLifeUpdate += action;

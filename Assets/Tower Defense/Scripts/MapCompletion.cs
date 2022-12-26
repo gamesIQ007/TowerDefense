@@ -59,7 +59,14 @@ namespace TowerDefense
         /// <param name="levelScore">Очки</param>
         public static void SaveEpisodeResult(int levelScore)
         {
-            Instance.SaveResult(LevelSequenceController.Instance.CurrentEpisode, levelScore);
+            if (Instance)
+            {
+                Instance.SaveResult(LevelSequenceController.Instance.CurrentEpisode, levelScore);
+            }
+            else
+            {
+                Debug.Log(levelScore);
+            }
         }
 
         /// <summary>
