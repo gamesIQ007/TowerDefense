@@ -1,6 +1,6 @@
+using System;
 using UnityEngine;
 using SpaceShooter;
-using UnityEngine.UIElements;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -29,6 +29,16 @@ namespace TowerDefense
         /// Состояние
         /// </summary>
         private EnemyState state;
+
+        /// <summary>
+        /// Событие при конце существования врага
+        /// </summary>
+        public event Action OnEnd;
+
+        private void OnDestroy()
+        {
+            OnEnd?.Invoke();
+        }
 
         /// <summary>
         /// Применить настройки из ScriptableObject к врагу

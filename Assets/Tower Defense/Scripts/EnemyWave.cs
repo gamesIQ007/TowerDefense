@@ -46,6 +46,7 @@ namespace TowerDefense
         /// Время подготовки
         /// </summary>
         [SerializeField] private float m_PrepareTime = 10.0f;
+        public float GetRemainingTime() { return m_PrepareTime - Time.time; }
 
         /// <summary>
         /// Следующая волна
@@ -56,6 +57,11 @@ namespace TowerDefense
         /// Событие о готовности волны
         /// </summary>
         private event Action OnWaveReady;
+
+        /// <summary>
+        /// Событие о начале подготовки волны
+        /// </summary>
+        public static Action<float> OnWavePrepare;
 
         private void Awake()
         {
@@ -77,6 +83,7 @@ namespace TowerDefense
         /// <param name="spawnEnemies">Действие</param>
         public void Prepare(Action spawnEnemies)
         {
+            OnWavePrepare?.Invoke(m_PrepareTime);
             m_PrepareTime += Time.time;
             enabled = true;
             OnWaveReady += spawnEnemies;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TowerDefense
@@ -22,6 +23,16 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private EnemyWave m_CurrentWave;
 
+        /// <summary>
+        /// Количество активных врагов
+        /// </summary>
+        private int activeEnemyCount = 0;
+
+        /// <summary>
+        /// Действие при окончании всех волн
+        /// </summary>
+        public event Action OnAllWavesDead;
+
         private void Start()
         {
             m_CurrentWave.Prepare(SpawnEnemies);
@@ -41,6 +52,8 @@ namespace TowerDefense
                         Enemy enemy = Instantiate(m_EnemyPrefab, m_Paths[pathIndex].StartArea.GetRandomInsideZone(), Quaternion.identity);
                         enemy.GetComponent<TDPatrolController>().SetPath(m_Paths[pathIndex]);
                         enemy.Use(asset);
+                        enemy.OnEnd += RecordEnemyDead;
+                        activeEnemyCount++;
                     }
                 }
                 else
@@ -50,6 +63,36 @@ namespace TowerDefense
             }
 
             m_CurrentWave = m_CurrentWave.PrepareNext(SpawnEnemies);
+        }
+
+        /// <summary>
+        /// Вызов следующей волны
+        /// </summary>
+        public void ForceNextWave()
+        {
+            if (m_CurrentWave)
+            {
+                TDPlayer.Instance.ChangeGold((int)m_CurrentWave.GetRemainingTime());
+                SpawnEnemies();
+            }
+            else
+            {
+                if (activeEnemyCount == 0)
+                {
+                    OnAllWavesDead?.Invoke();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Считаем умерших врагов
+        /// </summary>
+        private void RecordEnemyDead()
+        {
+            if (--activeEnemyCount == 0)
+            {
+                ForceNextWave();
+            }
         }
     }
 }
