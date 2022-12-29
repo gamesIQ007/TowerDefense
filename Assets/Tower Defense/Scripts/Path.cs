@@ -13,6 +13,12 @@ namespace TowerDefense
     public class Path : MonoBehaviour
     {
         /// <summary>
+        /// Стартовая точка
+        /// </summary>
+        [SerializeField] private CircleArea m_StartArea;
+        public CircleArea StartArea => m_StartArea;
+
+        /// <summary>
         /// Массив точек пути
         /// </summary>
         [SerializeField] private AIPointPatrol[] m_Points;
