@@ -12,20 +12,31 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private MapLevel[] m_Levels;
 
+        /// <summary>
+        /// Массив ссылок на дополнительные эпизоды на карте
+        /// </summary>
+        [SerializeField] private BranchLevel[] m_BranchLevels;
+
         private void Start()
         {
             int drawLevel = 0;
 
             int score = 1;
-            while (score != 0 && drawLevel < m_Levels.Length && MapCompletion.Instance.TryIndex(drawLevel, out var episode, out score))
+            while (score != 0 && drawLevel < m_Levels.Length)
             {
-                m_Levels[drawLevel].SetLevelData(episode, score);
+                m_Levels[drawLevel].Initialise();
                 drawLevel++;
+                // но тут не меняется score. Фигня из-за этого
             }
 
             for (int i = drawLevel; i < m_Levels.Length; i++)
             {
                 m_Levels[i].gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < m_BranchLevels.Length; i++)
+            {
+                m_BranchLevels[i].TryActivate();
             }
         }
     }

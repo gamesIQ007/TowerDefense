@@ -28,29 +28,42 @@ namespace TowerDefense
         }
 
         /// <summary>
+        /// Количество очков всего
+        /// </summary>
+        private int totalScore;
+        public int TotalScore => totalScore;
+
+        /// <summary>
         /// Данные о результатах завершения эпизодов
         /// </summary>
         [SerializeField] private EpisodeScore[] m_CompletionData;
-        public bool TryIndex(int id, out Episode episode, out int score)
-        {
-            if (id >= 0 && id < m_CompletionData.Length)
-            {
-                episode = m_CompletionData[id].episode;
-                score = m_CompletionData[id].score;
-                return true;
-            }
-            else
-            {
-                episode = null;
-                score = 0;
-                return false;
-            }
-        }
 
         private new void Awake()
         {
             base.Awake();
             Saver<EpisodeScore[]>.TryLoad(FILENAME, ref m_CompletionData);
+
+            foreach (var episodeScore in m_CompletionData)
+            {
+                totalScore += episodeScore.score;
+            }
+        }
+
+        /// <summary>
+        /// Получить очки эпизода
+        /// </summary>
+        /// <param name="episode">Эпизод</param>
+        /// <returns>Очки</returns>
+        public int GetEpisodeScore(Episode episode)
+        {
+            foreach (var data in m_CompletionData)
+            {
+                if (episode == data.episode)
+                {
+                    return data.score;
+                }
+            }
+            return 0;
         }
 
         /// <summary>

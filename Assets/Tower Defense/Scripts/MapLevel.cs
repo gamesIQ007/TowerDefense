@@ -12,7 +12,7 @@ namespace TowerDefense
         /// <summary>
         /// Эпизод
         /// </summary>
-        private Episode m_Episode;
+        [SerializeField] private Episode m_Episode;
 
         /// <summary>
         /// Панель результата
@@ -25,6 +25,11 @@ namespace TowerDefense
         [SerializeField] private Image[] m_ResultImages;
 
         /// <summary>
+        /// Пройден ли уровень
+        /// </summary>
+        public bool IsComplete => gameObject.activeSelf && m_ResultPanel.gameObject.activeSelf;
+
+        /// <summary>
         /// Загрузить уровень
         /// </summary>
         public void LoadLevel()
@@ -33,18 +38,16 @@ namespace TowerDefense
         }
 
         /// <summary>
-        /// Установить данные эпизода
+        /// Инициализация уровня
         /// </summary>
-        /// <param name="episode">Эпизод</param>
-        /// <param name="score">Очки</param>
-        public void SetLevelData(Episode episode, int score)
+        public void Initialise()
         {
-            m_Episode = episode;
+            var score = MapCompletion.Instance.GetEpisodeScore(m_Episode);
             m_ResultPanel.gameObject.SetActive(score > 0);
             for (int i = 0; i < score; i++)
             {
                 m_ResultImages[i].color = Color.white;
-            }            
+            }
         }
     }
 }
