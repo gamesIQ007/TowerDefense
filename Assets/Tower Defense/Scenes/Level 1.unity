@@ -406,6 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348928486}
   - component: {fileID: 348928485}
+  - component: {fileID: 348928487}
   m_Layer: 0
   m_Name: TestLevelSequenceController
   m_TagString: Untagged
@@ -442,6 +443,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &348928487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348928484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e704acfb093e014d984cd40e1002508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DoNotDestroyOnLoad: 0
+  m_Save:
+  - asset: {fileID: 11400000, guid: 272c7e64e0269374692dabf658ca7acb, type: 2}
+    level: 0
 --- !u!1 &375611160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2487,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Gold: 150
+  m_HealthUpgrade: {fileID: 11400000, guid: 272c7e64e0269374692dabf658ca7acb, type: 2}
   m_TowerPrefab: {fileID: 4081151248670827390, guid: a59b23a0a84dc8a43a663b22497c0cfa, type: 3}
 --- !u!114 &1849984329
 MonoBehaviour:

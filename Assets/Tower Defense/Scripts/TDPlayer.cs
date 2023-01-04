@@ -64,6 +64,18 @@ namespace TowerDefense
         }
 
         /// <summary>
+        /// Апгрейд увеличения жизней
+        /// </summary>
+        [SerializeField] private UpgradeAsset m_HealthUpgrade;
+
+        private new void Awake()
+        {
+            base.Awake();
+            int level = Upgrades.GetUpgradeLevel(m_HealthUpgrade);
+            TakeDamage(-level);
+        }
+
+        /// <summary>
         /// Изменить количество здоровья
         /// </summary>
         /// <param name="gold">Здоровье</param>

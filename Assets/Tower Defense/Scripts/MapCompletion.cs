@@ -9,6 +9,9 @@ namespace TowerDefense
     /// </summary>
     public class MapCompletion : SingletonBase<MapCompletion>
     {
+        /// <summary>
+        /// Файл сохранения
+        /// </summary>
         public const string FILENAME = "completion.dat";
 
         /// <summary>
