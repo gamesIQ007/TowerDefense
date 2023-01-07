@@ -13,6 +13,11 @@ namespace TowerDefense
         /// </summary>
         private int m_LevelScore = 3;
 
+        /// <summary>
+        /// Апгрейд времени на уровень
+        /// </summary>
+        [SerializeField] private UpgradeAsset m_TimeUpgrade;
+
         private new void Start()
         {
             base.Start();
@@ -43,6 +48,13 @@ namespace TowerDefense
                 TDPlayer.OnLifeUpdate -= LifeScoreChange;
             }
             TDPlayer.OnLifeUpdate += LifeScoreChange;
+        }
+
+        private new void Awake()
+        {
+            base.Awake();
+            int timeUpgrade = (int)(Upgrades.GetUpgradeLevel(m_TimeUpgrade) * Upgrades.GetUpgradeModifier(m_TimeUpgrade));
+            m_ReferenceTime += timeUpgrade;
         }
 
         /// <summary>

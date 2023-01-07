@@ -60,6 +60,13 @@ namespace TowerDefense
         public void ChangeGold(int gold)
         {
             m_Gold += gold;
+
+            int goldUpgrade = (int)(Upgrades.GetUpgradeLevel(m_GoldUpgrade) * Upgrades.GetUpgradeModifier(m_GoldUpgrade));
+            if (gold > 0)
+            {
+                m_Gold += goldUpgrade;
+            }
+
             OnGoldUpdate(m_Gold);
         }
 
@@ -68,11 +75,16 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private UpgradeAsset m_HealthUpgrade;
 
+        /// <summary>
+        /// Апгрейд увеличения золота
+        /// </summary>
+        [SerializeField] private UpgradeAsset m_GoldUpgrade;
+
         private new void Awake()
         {
             base.Awake();
-            int level = Upgrades.GetUpgradeLevel(m_HealthUpgrade);
-            TakeDamage(-level);
+            int hpUpgrade = (int) (Upgrades.GetUpgradeLevel(m_HealthUpgrade) * Upgrades.GetUpgradeModifier(m_HealthUpgrade));
+            TakeDamage(-hpUpgrade);
         }
 
         /// <summary>

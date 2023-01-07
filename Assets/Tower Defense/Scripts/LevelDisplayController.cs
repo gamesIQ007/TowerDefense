@@ -25,8 +25,8 @@ namespace TowerDefense
             while (score != 0 && drawLevel < m_Levels.Length)
             {
                 m_Levels[drawLevel].Initialise();
+                score = MapCompletion.Instance.GetEpisodeScore(m_Levels[drawLevel].Episode);
                 drawLevel++;
-                // но тут не меняется score. Фигня из-за этого
             }
 
             for (int i = drawLevel; i < m_Levels.Length; i++)

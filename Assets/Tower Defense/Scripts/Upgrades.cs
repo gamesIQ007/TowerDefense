@@ -17,7 +17,7 @@ namespace TowerDefense
         /// Имеющиеся у игрока апгрейды
         /// </summary>
         [Serializable]
-        private class UpgrageSave
+        private class UpgradeSave
         {
             /// <summary>
             /// Ассет апгрейда
@@ -33,12 +33,12 @@ namespace TowerDefense
         /// <summary>
         /// Массив купленных апгрейдов
         /// </summary>
-        [SerializeField] private UpgrageSave[] m_Save;
+        [SerializeField] private UpgradeSave[] m_Save;
 
         private new void Awake()
         {
             base.Awake();
-            Saver<UpgrageSave[]>.TryLoad(FILENAME, ref m_Save);
+            Saver<UpgradeSave[]>.TryLoad(FILENAME, ref m_Save);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace TowerDefense
                 if (upgrade.asset == asset)
                 {
                     upgrade.level++;
-                    Saver<UpgrageSave[]>.Save(FILENAME, Instance.m_Save);
+                    Saver<UpgradeSave[]>.Save(FILENAME, Instance.m_Save);
                 }
             }
         }
@@ -73,6 +73,27 @@ namespace TowerDefense
             return 0;
         }
 
+        /// <summary>
+        /// Выдаём модификатор апгрейда по ассету
+        /// </summary>
+        /// <param name="asset">Ассет</param>
+        /// <returns>Модификатор апгрейда</returns>
+        public static float GetUpgradeModifier(UpgradeAsset asset)
+        {
+            foreach (var upgrade in Instance.m_Save)
+            {
+                if (upgrade.asset == asset)
+                {
+                    return upgrade.asset.modifier;
+                }
+            }
+            return 1;
+        }
+
+        /// <summary>
+        /// Получаем полную стоимость апгрейдов
+        /// </summary>
+        /// <returns>Полная стоимость</returns>
         public static int GetTotalCost()
         {
             int result = 0;

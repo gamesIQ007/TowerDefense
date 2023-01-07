@@ -13,6 +13,7 @@ namespace TowerDefense
         /// Ёпизод
         /// </summary>
         [SerializeField] private Episode m_Episode;
+        public Episode Episode => m_Episode;
 
         /// <summary>
         /// ѕанель результата

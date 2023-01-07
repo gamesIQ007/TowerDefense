@@ -17,5 +17,10 @@ namespace TowerDefense
         /// Массив цен
         /// </summary>
         public int[] costByLevel = { 3 };
+
+        /// <summary>
+        /// Модификатор, какой бонус за уровень
+        /// </summary>
+        public float modifier = 5.0f;
     }
 }

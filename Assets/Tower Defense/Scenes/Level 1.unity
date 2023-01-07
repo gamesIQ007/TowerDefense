@@ -459,6 +459,10 @@ MonoBehaviour:
   m_Save:
   - asset: {fileID: 11400000, guid: 272c7e64e0269374692dabf658ca7acb, type: 2}
     level: 0
+  - asset: {fileID: 11400000, guid: c071756575844c244beae73408983b55, type: 2}
+    level: 0
+  - asset: {fileID: 11400000, guid: 314548792f700c241a614a49d65271f8, type: 2}
+    level: 0
 --- !u!1 &375611160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,6 +2492,7 @@ MonoBehaviour:
       m_Calls: []
   m_Gold: 150
   m_HealthUpgrade: {fileID: 11400000, guid: 272c7e64e0269374692dabf658ca7acb, type: 2}
+  m_GoldUpgrade: {fileID: 11400000, guid: c071756575844c244beae73408983b55, type: 2}
   m_TowerPrefab: {fileID: 4081151248670827390, guid: a59b23a0a84dc8a43a663b22497c0cfa, type: 3}
 --- !u!114 &1849984329
 MonoBehaviour:
@@ -2506,6 +2511,7 @@ MonoBehaviour:
   m_LevelCompleted:
     m_PersistentCalls:
       m_Calls: []
+  m_TimeUpgrade: {fileID: 11400000, guid: 314548792f700c241a614a49d65271f8, type: 2}
 --- !u!224 &1851111343 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2106819755896273644, guid: 95dec5b269a503e409355d915effe44b, type: 3}
