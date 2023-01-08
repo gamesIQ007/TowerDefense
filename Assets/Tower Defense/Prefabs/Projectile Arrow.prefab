@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588850349923926707}
   - component: {fileID: 588850349923926706}
-  - component: {fileID: 588850349923926705}
+  - component: {fileID: 5615847303027087150}
   m_Layer: 0
   m_Name: Projectile Arrow
   m_TagString: Untagged
@@ -131,7 +131,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.0001
---- !u!114 &588850349923926705
+--- !u!114 &5615847303027087150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
+  m_DamageType: 0
   m_Velocity: 10
   m_LifeTime: 10
-  m_Damage: 5
+  m_Damage: 10
   m_ImpactEffectPrefab: {fileID: 0}
   m_IsHoming: 0
   m_IsAreaDamage: 0

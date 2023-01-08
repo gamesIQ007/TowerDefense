@@ -37,6 +37,16 @@ namespace TowerDefense
         public int hp = 10;
 
         /// <summary>
+        /// Тип брони
+        /// </summary>
+        public Enemy.ArmorType armorType;
+
+        /// <summary>
+        /// Броня
+        /// </summary>
+        public int armor = 0;
+
+        /// <summary>
         /// Урон
         /// </summary>
         public int damage = 1;

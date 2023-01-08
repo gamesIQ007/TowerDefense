@@ -9,6 +9,7 @@ using UnityEditor;
 namespace TowerDefense
 {
     [RequireComponent(typeof(TDPatrolController))]
+    [RequireComponent(typeof(Destructible))]
 
     /// <summary>
     /// Враг. Получает настройки из ScriptableObject
@@ -16,14 +17,79 @@ namespace TowerDefense
     public class Enemy : MonoBehaviour
     {
         /// <summary>
+        /// Перечень типов брони
+        /// </summary>
+        public enum ArmorType
+        {
+            /// <summary>
+            /// Базовый тип брони
+            /// </summary>
+            Base = 0,
+            /// <summary>
+            /// Магический тип брони
+            /// </summary>
+            Magic = 1,
+            /// <summary>
+            /// Броня от взрывов
+            /// </summary>
+            Explosion = 2
+        }
+
+        /// <summary>
+        /// Массив функций на определение урона в зависимости от типов снаряда и брони
+        /// </summary>
+        private static Func<int, Projectile.DamageType, int, int>[] ArmorDamageFunctions =
+        {
+            // расчёт урона для базовой брони
+            (int power, Projectile.DamageType type, int armor) =>
+            {
+                switch (type)
+                {
+                    case Projectile.DamageType.Magic: return power;
+                    default: return Mathf.Max(power - armor, 1);
+                }
+            },
+            // расчёт урона для магической брони
+            (int power, Projectile.DamageType type, int armor) =>
+            {
+                if (type == Projectile.DamageType.Base)
+                {
+                    armor = armor / 2;
+                }
+                return Mathf.Max(power - armor, 1);
+            },
+            // расчёт урона для брони от взрывов
+            (int power, Projectile.DamageType type, int armor) =>
+            {
+                switch (type)
+                {
+                    case Projectile.DamageType.Explosion: return Mathf.Max(power - armor, 1);
+                    default: return power;
+                }
+            }
+        };
+
+        /// <summary>
         /// Урон
         /// </summary>
         [SerializeField] private int m_Damage;
 
         /// <summary>
+        /// Тип брони
+        /// </summary>
+        [SerializeField] private ArmorType m_ArmorType;
+
+        /// <summary>
+        /// Броня
+        /// </summary>
+        [SerializeField] private int m_Armor;
+
+        /// <summary>
         /// Золото
         /// </summary>
         [SerializeField] private int m_Gold;
+
+        private Destructible destructible;
 
         /// <summary>
         /// Состояние
@@ -34,6 +100,11 @@ namespace TowerDefense
         /// Событие при конце существования врага
         /// </summary>
         public event Action OnEnd;
+
+        private void Awake()
+        {
+            destructible = GetComponent<Destructible>();
+        }
 
         private void OnDestroy()
         {
@@ -60,6 +131,9 @@ namespace TowerDefense
 
             m_Damage = asset.damage;
 
+            m_ArmorType = asset.armorType;
+            m_Armor = asset.armor;
+
             m_Gold = asset.gold;
         }
 
@@ -77,6 +151,15 @@ namespace TowerDefense
         public void GetPlayerGold()
         {
             TDPlayer.Instance.ChangeGold(m_Gold);
+        }
+
+        /// <summary>
+        /// Получение повреждений
+        /// </summary>
+        /// <param name="damage">Урон</param>
+        public void TakeDamage(int damage, Projectile.DamageType damageType)
+        {
+            destructible.ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, damageType, m_Armor));
         }
     }
 

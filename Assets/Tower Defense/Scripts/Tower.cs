@@ -27,11 +27,6 @@ namespace TowerDefense
         /// </summary>
         private Destructible target;
 
-        private void Start()
-        {
-            turrets = GetComponentsInChildren<Turret>();
-        }
-
         private void Update()
         {
             if (target != null)
@@ -60,6 +55,20 @@ namespace TowerDefense
                 {
                     target = enter.transform.root.GetComponent<Destructible>();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Применить ассет башни
+        /// </summary>
+        /// <param name="asset">Ассет</param>
+        public void Use(TowerAsset asset)
+        {
+            GetComponentInChildren<SpriteRenderer>().sprite = asset.sprite;
+            turrets = GetComponentsInChildren<Turret>();
+            foreach (var turret in turrets)
+            {
+                turret.AssignLoadout(asset.turret);
             }
         }
 

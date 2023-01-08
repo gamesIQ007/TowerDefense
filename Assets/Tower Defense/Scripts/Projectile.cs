@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TowerDefense;
+using SpaceShooter;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace SpaceShooter
+namespace TowerDefense
 {
     [RequireComponent(typeof(CircleCollider2D))]
     /// <summary>
@@ -14,6 +14,30 @@ namespace SpaceShooter
     /// </summary>
     public class Projectile : Entity
     {
+        /// <summary>
+        /// Перечисление типов урона
+        /// </summary>
+        public enum DamageType
+        {
+            /// <summary>
+            /// Базовый тип урона
+            /// </summary>
+            Base,
+            /// <summary>
+            /// Магический тип урона
+            /// </summary>
+            Magic,
+            /// <summary>
+            /// Взрывной тип урона
+            /// </summary>
+            Explosion
+        }
+
+        /// <summary>
+        /// Тип урона
+        /// </summary>
+        [SerializeField] private DamageType m_DamageType;
+
         /// <summary>
         /// Скорость снаряда
         /// </summary>
@@ -66,9 +90,9 @@ namespace SpaceShooter
         [SerializeField] private float m_Radius;
 
         /// <summary>
-        /// Список дестрактиблов в зоне поражения
+        /// Список врагов в зоне поражения
         /// </summary>
-        List<Destructible> m_DestructiblesInArea;
+        List<Enemy> m_EnemiesInArea;
 
         [Header("Effect")]
         /// <summary>
@@ -87,7 +111,7 @@ namespace SpaceShooter
         {
             if (m_IsAreaDamage)
             {
-                m_DestructiblesInArea = new List<Destructible>();
+                m_EnemiesInArea = new List<Enemy>();
             }
         }
 
@@ -116,18 +140,18 @@ namespace SpaceShooter
 
             if (hit)
             {
-                Destructible dest = hit.collider.transform.root.GetComponent<Destructible>();
+                Enemy enemy = hit.collider.transform.root.GetComponent<Enemy>();
 
-                if (dest != null && dest != m_Parent && m_IsAreaDamage == false)
+                if (enemy != null && m_IsAreaDamage == false)
                 {
-                    ApplyDamage(dest);
+                    ApplyDamage(enemy);
                 }
 
                 if (m_IsAreaDamage)
                 {
-                    for (int i = 0; i < m_DestructiblesInArea.Count; i++)
+                    for (int i = 0; i < m_EnemiesInArea.Count; i++)
                     {
-                        ApplyDamage(m_DestructiblesInArea[i]);
+                        ApplyDamage(m_EnemiesInArea[i]);
                     }
                 }
 
@@ -141,7 +165,7 @@ namespace SpaceShooter
         {
             if (m_IsAreaDamage)
             {
-                m_DestructiblesInArea.Add(other.transform.root.GetComponent<Destructible>());
+                m_EnemiesInArea.Add(other.transform.root.GetComponent<Enemy>());
             }
         }
 
@@ -149,7 +173,7 @@ namespace SpaceShooter
         {
             if (m_IsAreaDamage)
             {
-                m_DestructiblesInArea.Remove(other.transform.root.GetComponent<Destructible>());
+                m_EnemiesInArea.Remove(other.transform.root.GetComponent<Enemy>());
             }
         }
 
@@ -173,24 +197,14 @@ namespace SpaceShooter
 
         #endregion
 
-        private void ApplyDamage(Destructible destructible)
+        private void ApplyDamage(Enemy enemy)
         {
-            destructible.ApplyDamage(m_Damage);
+            enemy.TakeDamage(m_Damage, m_DamageType);
 
             if (m_State == EnemyState.Freezed)
             {
-                destructible.GetComponent<SpaceShip>().ChangeState(m_StateTime);
+                enemy.GetComponent<SpaceShip>().ChangeState(m_StateTime);
             }
-
-            /*if (m_Parent == Player.Instance.ActiveShip)
-            {
-                Player.Instance.AddScore(destructible.ScoreValue);
-
-                if (destructible.HitPoints < 0)
-                {
-                    Player.Instance.AddKill();
-                }
-            }*/
         }
 
         /// <summary>

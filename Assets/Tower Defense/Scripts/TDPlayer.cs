@@ -113,8 +113,7 @@ namespace TowerDefense
             {
                 ChangeGold(-towerAsset.goldCost);
                 Tower tower = Instantiate(m_TowerPrefab, buildSite.position, Quaternion.identity);
-                tower.GetComponentInChildren<SpriteRenderer>().sprite = towerAsset.sprite;
-                tower.GetComponentInChildren<Turret>().AssignLoadout(towerAsset.turret);
+                tower.Use(towerAsset);
                 Destroy(buildSite.gameObject);
             }
         }

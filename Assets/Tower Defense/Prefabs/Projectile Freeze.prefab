@@ -164,9 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
+  m_DamageType: 1
   m_Velocity: 10
   m_LifeTime: 10
-  m_Damage: 5
+  m_Damage: 10
   m_ImpactEffectPrefab: {fileID: 0}
   m_IsHoming: 0
   m_IsAreaDamage: 0

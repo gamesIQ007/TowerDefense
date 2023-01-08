@@ -17,6 +17,8 @@ MonoBehaviour:
   animations: {fileID: 9100000, guid: cfc38cd59fdd8854998525d9651863d3, type: 2}
   moveSpeed: 1.5
   hp: 10
+  armorType: 0
+  armor: 5
   damage: 2
   score: 100
   radius: 0.25
