@@ -26,7 +26,7 @@ namespace TowerDefense
         /// <summary>
         /// Количество активных врагов
         /// </summary>
-        private int activeEnemyCount = 0;
+        private int m_ActiveEnemyCount = 0;
 
         /// <summary>
         /// Действие при окончании всех волн
@@ -53,7 +53,7 @@ namespace TowerDefense
                         enemy.GetComponent<TDPatrolController>().SetPath(m_Paths[pathIndex]);
                         enemy.Use(asset);
                         enemy.OnEnd += RecordEnemyDead;
-                        activeEnemyCount++;
+                        m_ActiveEnemyCount++;
                     }
                 }
                 else
@@ -77,7 +77,7 @@ namespace TowerDefense
             }
             else
             {
-                if (activeEnemyCount == 0)
+                if (m_ActiveEnemyCount == 0)
                 {
                     OnAllWavesDead?.Invoke();
                 }
@@ -89,7 +89,7 @@ namespace TowerDefense
         /// </summary>
         private void RecordEnemyDead()
         {
-            if (--activeEnemyCount == 0)
+            if (--m_ActiveEnemyCount == 0)
             {
                 ForceNextWave();
             }

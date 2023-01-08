@@ -14,6 +14,9 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private Button m_ContinueButton;
 
+        /// <summary>
+        /// Панель с подтверждением начала новой игры
+        /// </summary>
         [SerializeField] private GameObject m_ConfirmationPanel;
 
         private void Start()

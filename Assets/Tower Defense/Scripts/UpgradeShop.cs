@@ -11,7 +11,7 @@ namespace TowerDefense
         /// <summary>
         /// Количество денег
         /// </summary>
-        private int money;
+        private int m_Money;
 
         /// <summary>
         /// Текст с количеством денег
@@ -39,13 +39,13 @@ namespace TowerDefense
         /// </summary>
         public void UpdateMoney()
         {
-            money = MapCompletion.Instance.TotalScore;
-            money -= Upgrades.GetTotalCost();
-            m_MoneyText.text = money.ToString();
+            m_Money = MapCompletion.Instance.TotalScore;
+            m_Money -= Upgrades.GetTotalCost();
+            m_MoneyText.text = m_Money.ToString();
 
             foreach (var slot in m_Upgrades)
             {
-                slot.CheckCost(money);
+                slot.CheckCost(m_Money);
             }
         }
     }

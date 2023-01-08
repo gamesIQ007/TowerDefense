@@ -45,9 +45,9 @@ namespace TowerDefense
             void LifeScoreChange(int _)
             {
                 m_LevelScore--;
-                TDPlayer.OnLifeUpdate -= LifeScoreChange;
+                TDPlayer.Instance.OnLifeUpdate -= LifeScoreChange;
             }
-            TDPlayer.OnLifeUpdate += LifeScoreChange;
+            TDPlayer.Instance.OnLifeUpdate += LifeScoreChange;
         }
 
         private new void Awake()

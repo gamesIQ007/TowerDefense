@@ -73,6 +73,10 @@ namespace TowerDefense
             Initialize();
         }
 
+        /// <summary>
+        /// Проверка, достаточно ли денег для покупки
+        /// </summary>
+        /// <param name="money">Количество денег</param>
         public void CheckCost(int money)
         {
             m_Button.interactable = money >= m_Cost;

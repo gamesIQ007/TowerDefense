@@ -95,12 +95,12 @@ namespace SpaceShooter
         /// <summary>
         /// Изображение
         /// </summary>
-        private SpriteRenderer sprite;
+        private SpriteRenderer m_SpriteRenderer;
 
         /// <summary>
         /// Звуки корабля (стрельбы)
         /// </summary>
-        [HideInInspector] public new AudioSource audio;
+        [HideInInspector] public new AudioSource m_Audio;
 
         [Header("DeathEffect")]
         /// <summary>
@@ -121,10 +121,10 @@ namespace SpaceShooter
 
             m_ThrustModifier = 1;
 
-            audio = GetComponent<AudioSource>();
+            m_Audio = GetComponent<AudioSource>();
 
-            sprite = GetComponentInChildren<SpriteRenderer>();
-            m_NormalStateColor = sprite.color;
+            m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            m_NormalStateColor = m_SpriteRenderer.color;
 
             InitTimers();
         }
@@ -135,7 +135,7 @@ namespace SpaceShooter
 
             UpdateTimers();
 
-            if (stateTimer.IsFinished && state == EnemyState.Freezed)
+            if (m_StateTimer.IsFinished && m_State == EnemyState.Freezed)
             {
                 RemoveState();
             }
@@ -152,7 +152,7 @@ namespace SpaceShooter
 
         private void FixedUpdate()
         {
-            if (state != EnemyState.Freezed)
+            if (m_State != EnemyState.Freezed)
             {
                 UpdateRigitBody();
             }
@@ -249,7 +249,7 @@ namespace SpaceShooter
         {
             m_ThrustModifier = value;
             m_ThrustModifierTimer += time;
-            sprite.color = m_FreezedStateColor;
+            m_SpriteRenderer.color = m_FreezedStateColor;
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace SpaceShooter
         {
             m_ThrustModifier = 1;
             m_ThrustModifierTimer = 0;
-            sprite.color = m_NormalStateColor;
+            m_SpriteRenderer.color = m_NormalStateColor;
         }
 
         protected override void OnDeath()
@@ -318,7 +318,7 @@ namespace SpaceShooter
         /// <summary>
         /// Статус
         /// </summary>
-        private EnemyState state;
+        private EnemyState m_State;
 
         /// <summary>
         /// Цвет при статусе заморозки
@@ -330,7 +330,10 @@ namespace SpaceShooter
         /// </summary>
         [SerializeField] private Color m_NormalStateColor;
 
-        private Timer stateTimer;
+        /// <summary>
+        /// Таймер статуса
+        /// </summary>
+        private Timer m_StateTimer;
 
         /// <summary>
         /// Включение заморозки
@@ -339,9 +342,9 @@ namespace SpaceShooter
         /// <param name="time">Время действия модификатора толкающей силы</param>
         public void ChangeState(float time)
         {
-            state = EnemyState.Freezed;
-            stateTimer = new Timer(time);
-            sprite.color = m_FreezedStateColor;
+            m_State = EnemyState.Freezed;
+            m_StateTimer = new Timer(time);
+            m_SpriteRenderer.color = m_FreezedStateColor;
             m_Rigid.velocity = new Vector2(0, 0);
             m_Rigid.angularVelocity = 0;
             m_Rigid.isKinematic = true;
@@ -352,8 +355,8 @@ namespace SpaceShooter
         /// </summary>
         private void RemoveState()
         {
-            state = EnemyState.None;
-            sprite.color = m_NormalStateColor;
+            m_State = EnemyState.None;
+            m_SpriteRenderer.color = m_NormalStateColor;
             m_Rigid.isKinematic = false;
         }
 
@@ -363,12 +366,12 @@ namespace SpaceShooter
 
         private void InitTimers()
         {
-            stateTimer = new Timer(0);
+            m_StateTimer = new Timer(0);
         }
 
         private void UpdateTimers()
         {
-            stateTimer.RemoveTime(Time.deltaTime);
+            m_StateTimer.RemoveTime(Time.deltaTime);
         }
 
         #endregion

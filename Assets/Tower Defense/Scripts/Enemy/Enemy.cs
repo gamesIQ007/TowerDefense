@@ -89,12 +89,12 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private int m_Gold;
 
-        private Destructible destructible;
+        private Destructible m_Destructible;
 
         /// <summary>
         /// Состояние
         /// </summary>
-        private EnemyState state;
+        private EnemyState m_State;
 
         /// <summary>
         /// Событие при конце существования врага
@@ -103,7 +103,7 @@ namespace TowerDefense
 
         private void Awake()
         {
-            destructible = GetComponent<Destructible>();
+            m_Destructible = GetComponent<Destructible>();
         }
 
         private void OnDestroy()
@@ -159,7 +159,7 @@ namespace TowerDefense
         /// <param name="damage">Урон</param>
         public void TakeDamage(int damage, Projectile.DamageType damageType)
         {
-            destructible.ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, damageType, m_Armor));
+            m_Destructible.ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, damageType, m_Armor));
         }
     }
 

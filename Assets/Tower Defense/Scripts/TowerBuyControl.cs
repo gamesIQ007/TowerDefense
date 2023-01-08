@@ -28,6 +28,18 @@ namespace TowerDefense
         /// </summary>
         [SerializeField] private Transform m_BuildSite;
 
+        private void Start()
+        {
+            TDPlayer.Instance.GoldUpdateSubscription(GoldStatusCheck);
+            m_Text.text = m_TowerAsset.goldCost.ToString();
+            m_Button.GetComponent<Image>().sprite = m_TowerAsset.GUISprite;
+        }
+
+        private void OnDestroy()
+        {
+            TDPlayer.Instance.GoldUpdateUnsubscribe(GoldStatusCheck);
+        }
+
         /// <summary>
         /// Задать позицию места постройки
         /// </summary>
@@ -35,13 +47,6 @@ namespace TowerDefense
         public void SetBuildSite(Transform position)
         {
             m_BuildSite = position;
-        }
-
-        private void Start()
-        {
-            TDPlayer.GoldUpdateSubscription(GoldStatusCheck);
-            m_Text.text = m_TowerAsset.goldCost.ToString();
-            m_Button.GetComponent<Image>().sprite = m_TowerAsset.GUISprite;
         }
 
         /// <summary>

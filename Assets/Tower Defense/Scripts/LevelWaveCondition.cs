@@ -12,14 +12,14 @@ namespace TowerDefense
         /// <summary>
         /// Пройден ли уровень
         /// </summary>
-        private bool isCompleted;
-        public bool IsCompleted => isCompleted;
+        private bool m_IsCompleted;
+        public bool IsCompleted => m_IsCompleted;
 
         private void Start()
         {
             FindObjectOfType<EnemyWaveManager>().OnAllWavesDead += () =>
             {
-                isCompleted = true;
+                m_IsCompleted = true;
             };
         }
     }

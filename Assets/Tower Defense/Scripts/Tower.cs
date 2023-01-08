@@ -20,22 +20,22 @@ namespace TowerDefense
         /// <summary>
         /// Туррели
         /// </summary>
-        private Turret[] turrets;
+        private Turret[] m_Turrets;
 
         /// <summary>
         /// Цель
         /// </summary>
-        private Destructible target;
+        private Destructible m_Target;
 
         private void Update()
         {
-            if (target != null)
+            if (m_Target != null)
             {
-                Vector2 targetVector = target.transform.position - transform.position;
+                Vector2 targetVector = m_Target.transform.position - transform.position;
 
                 if (targetVector.magnitude <= m_Radius)
                 {
-                    foreach (Turret turret in turrets)
+                    foreach (Turret turret in m_Turrets)
                     {
                         turret.transform.up = targetVector;
                         turret.Fire();
@@ -43,17 +43,17 @@ namespace TowerDefense
                 }
                 else
                 {
-                    target = null;
+                    m_Target = null;
                 }
             }
 
-            if (target == null)
+            if (m_Target == null)
             {
                 var enter = Physics2D.OverlapCircle(transform.position, m_Radius);
                 
                 if (enter != null)
                 {
-                    target = enter.transform.root.GetComponent<Destructible>();
+                    m_Target = enter.transform.root.GetComponent<Destructible>();
                 }
             }
         }
@@ -65,8 +65,8 @@ namespace TowerDefense
         public void Use(TowerAsset asset)
         {
             GetComponentInChildren<SpriteRenderer>().sprite = asset.sprite;
-            turrets = GetComponentsInChildren<Turret>();
-            foreach (var turret in turrets)
+            m_Turrets = GetComponentsInChildren<Turret>();
+            foreach (var turret in m_Turrets)
             {
                 turret.AssignLoadout(asset.turret);
             }

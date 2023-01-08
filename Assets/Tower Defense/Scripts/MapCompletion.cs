@@ -33,8 +33,8 @@ namespace TowerDefense
         /// <summary>
         /// Количество очков всего
         /// </summary>
-        private int totalScore;
-        public int TotalScore => totalScore;
+        private int m_TotalScore;
+        public int TotalScore => m_TotalScore;
 
         /// <summary>
         /// Данные о результатах завершения эпизодов
@@ -48,7 +48,7 @@ namespace TowerDefense
 
             foreach (var episodeScore in m_CompletionData)
             {
-                totalScore += episodeScore.score;
+                m_TotalScore += episodeScore.score;
             }
         }
 
@@ -77,31 +77,22 @@ namespace TowerDefense
         {
             if (Instance)
             {
-                Instance.SaveResult(LevelSequenceController.Instance.CurrentEpisode, levelScore);
+                foreach (var item in Instance.m_CompletionData)
+                {
+                    if (item.episode == LevelSequenceController.Instance.CurrentEpisode)
+                    {
+                        if (levelScore > item.score)
+                        {
+                            Instance.m_TotalScore += levelScore - item.score;
+                            item.score = levelScore;
+                            Saver<EpisodeScore[]>.Save(FILENAME, Instance.m_CompletionData);
+                        }
+                    }
+                }
             }
             else
             {
                 Debug.Log(levelScore);
-            }
-        }
-
-        /// <summary>
-        /// Сохранение результатов эпизода
-        /// </summary>
-        /// <param name="episode">Эпизод</param>
-        /// <param name="levelScore">Очки</param>
-        private void SaveResult(Episode currentEpisode, int levelScore)
-        {
-            foreach (var item in m_CompletionData)
-            {
-                if (item.episode == currentEpisode)
-                {
-                    if (levelScore > item.score)
-                    {
-                        item.score = levelScore;
-                        Saver<EpisodeScore[]>.Save(FILENAME, m_CompletionData);
-                    }
-                }
             }
         }
     }

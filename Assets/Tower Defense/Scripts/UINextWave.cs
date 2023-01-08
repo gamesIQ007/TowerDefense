@@ -16,27 +16,27 @@ namespace TowerDefense
         /// <summary>
         /// Менеджер волн врагов
         /// </summary>
-        private EnemyWaveManager manager;
+        private EnemyWaveManager m_Manager;
 
         /// <summary>
         /// Время до следующей волны
         /// </summary>
-        private float timeToNextWave;
+        private float m_TimeToNextWave;
 
         private void Start()
         {
-            manager = FindObjectOfType<EnemyWaveManager>();
+            m_Manager = FindObjectOfType<EnemyWaveManager>();
             EnemyWave.OnWavePrepare += (float time) =>
             {
-                timeToNextWave = time;
+                m_TimeToNextWave = time;
             };
         }
 
         private void Update()
         {
-            timeToNextWave -= Time.deltaTime;
+            m_TimeToNextWave -= Time.deltaTime;
 
-            int bonus = (int)timeToNextWave;
+            int bonus = (int)m_TimeToNextWave;
 
             if (bonus < 0)
             {
@@ -50,7 +50,7 @@ namespace TowerDefense
         /// </summary>
         public void CallWave()
         {
-            manager.ForceNextWave();
+            m_Manager.ForceNextWave();
         }
     }
 }

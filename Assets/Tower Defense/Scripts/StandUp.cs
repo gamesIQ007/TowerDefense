@@ -10,24 +10,24 @@ namespace TowerDefense
         /// <summary>
         /// ригит родителя
         /// </summary>
-        private Rigidbody2D rig;
+        private Rigidbody2D m_Rigidbody;
 
         /// <summary>
         /// Спрайт
         /// </summary>
-        private SpriteRenderer sr;
+        private SpriteRenderer m_SpriteRenderer;
 
         private void Start()
         {
-            rig = transform.root.GetComponent<Rigidbody2D>();
-            sr = GetComponent<SpriteRenderer>();
+            m_Rigidbody = transform.root.GetComponent<Rigidbody2D>();
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void LateUpdate()
         {
             transform.up = Vector2.up;
 
-            sr.flipX = rig.velocity.x > 0.01f ? false : true;
+            m_SpriteRenderer.flipX = m_Rigidbody.velocity.x > 0.01f ? false : true;
         }
     }
 }

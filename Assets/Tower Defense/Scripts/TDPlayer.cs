@@ -20,13 +20,13 @@ namespace TowerDefense
         /// <summary>
         /// Системное событие на изменение золота
         /// </summary>
-        private static event Action<int> OnGoldUpdate;
-        public static void GoldUpdateSubscription(Action<int> action)
+        private event Action<int> OnGoldUpdate;
+        public void GoldUpdateSubscription(Action<int> action)
         {
             OnGoldUpdate += action;
             action(Instance.m_Gold);
         }
-        public static void GoldUpdateUnsubscribe(Action<int> action)
+        public void GoldUpdateUnsubscribe(Action<int> action)
         {
             OnGoldUpdate -= action;
             action(Instance.m_Gold);
@@ -35,13 +35,13 @@ namespace TowerDefense
         /// <summary>
         /// Системное событие на изменение жизни
         /// </summary>
-        public static event Action<int> OnLifeUpdate;
-        public static void LifeUpdateSubscription(Action<int> action)
+        public event Action<int> OnLifeUpdate;
+        public void LifeUpdateSubscription(Action<int> action)
         {
             OnLifeUpdate += action;
             action(Instance.m_NumLives);
         }
-        public static void LifeUpdateUnsubscribe(Action<int> action)
+        public void LifeUpdateUnsubscribe(Action<int> action)
         {
             OnLifeUpdate -= action;
             action(Instance.m_NumLives);

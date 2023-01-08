@@ -10,11 +10,11 @@ namespace TowerDefense
         /// <summary>
         /// Трансформ контроллера
         /// </summary>
-        private RectTransform rectTransform;
+        private RectTransform m_RectTransform;
 
         private void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
+            m_RectTransform = GetComponent<RectTransform>();
             BuildSite.OnClickEvent += MoveToBuildSite;
             gameObject.SetActive(false);
         }
@@ -33,7 +33,7 @@ namespace TowerDefense
             if (buildSite)
             {
                 var position = Camera.main.WorldToScreenPoint(buildSite.position);
-                rectTransform.anchoredPosition = position;
+                m_RectTransform.anchoredPosition = position;
                 gameObject.SetActive(true);
 
                 foreach (var tbc in GetComponentsInChildren<TowerBuyControl>())
