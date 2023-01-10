@@ -10,9 +10,25 @@ namespace TowerDefense
     public class BuildSite : MonoBehaviour, IPointerDownHandler
     {
         /// <summary>
+        /// Массив доступных для постройки башен
+        /// </summary>
+        public TowerAsset[] buildableTowers;
+        public void SetBuildableTowers(TowerAsset[] towers) 
+        { 
+            if (towers == null || towers.Length == 0)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                buildableTowers = towers;
+            }
+        }
+
+        /// <summary>
         /// Событие по клику
         /// </summary>
-        public static event Action<Transform> OnClickEvent;
+        public static event Action<BuildSite> OnClickEvent;
 
         /// <summary>
         /// Обработка клика мышки
@@ -20,7 +36,7 @@ namespace TowerDefense
         /// <param name="eventData"></param>
         public virtual void OnPointerDown(PointerEventData eventData)
         {
-            OnClickEvent(transform.root);
+            OnClickEvent(this);
         }
 
         /// <summary>

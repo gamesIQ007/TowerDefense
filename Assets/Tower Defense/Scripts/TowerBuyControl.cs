@@ -12,6 +12,7 @@ namespace TowerDefense
         /// Настройки башни
         /// </summary>
         [SerializeField] private TowerAsset m_TowerAsset;
+        public void SetTowerAsset(TowerAsset asset) { m_TowerAsset = asset; }
 
         /// <summary>
         /// Текст

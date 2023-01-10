@@ -526,6 +526,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466925268, guid: 9be6eeb79de757d40a908ac52229d0cf, type: 3}
+      propertyPath: buildableTowers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466925268, guid: 9be6eeb79de757d40a908ac52229d0cf, type: 3}
+      propertyPath: m_BuildableTowers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7468349956751813058, guid: 9be6eeb79de757d40a908ac52229d0cf, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1506,6 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22ecbb51c84fb445ab3c19f930f9275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildableTowers: []
 --- !u!1 &1592125664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2054,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_OffsetCenter
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_MageTowerUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e42e3f1909d2664d9cf1175183259f2, type: 2}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_TowerAssets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_TowerAssets.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb372b13036243c42a9e01b6e409ac3a, type: 2}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_TowerAssets.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 78e5c7f79883bf445adbb5ea3ff8769f, type: 2}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_TowerAssets.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd4eb11fe3ec6a419a626149895e0be, type: 2}
+    - target: {fileID: 2106819756020909826, guid: 95dec5b269a503e409355d915effe44b, type: 3}
+      propertyPath: m_TowerAssets.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd4eb11fe3ec6a419a626149895e0be, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95dec5b269a503e409355d915effe44b, type: 3}
 --- !u!1001 &6095692813783362901
@@ -2102,6 +2139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCamp
       objectReference: {fileID: 0}
+    - target: {fileID: 6095692813208512541, guid: 85e0e68aff1429d4f8d237569c63d1aa, type: 3}
+      propertyPath: m_Gold
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e0e68aff1429d4f8d237569c63d1aa, type: 3}
 --- !u!1001 &8024409584587645762
@@ -2154,6 +2195,10 @@ PrefabInstance:
     - target: {fileID: 8024409584785037988, guid: ab4d687bba3a155468bc81d6d0d7207e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024409584785037989, guid: ab4d687bba3a155468bc81d6d0d7207e, type: 3}
+      propertyPath: m_Save.Array.data[3].level
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8024409584785037990, guid: ab4d687bba3a155468bc81d6d0d7207e, type: 3}
       propertyPath: m_Name

@@ -28,5 +28,33 @@ namespace TowerDefense
         /// Настройки турели
         /// </summary>
         public TurretProperties turret;
+
+        /// <summary>
+        /// Требуемый апгрейд
+        /// </summary>
+        [SerializeField] private UpgradeAsset requiredUpgrade;
+
+        /// <summary>
+        /// Требуемый уровень апгрейда
+        /// </summary>
+        [SerializeField] private int requiredUpgradeLevel;
+
+        /// <summary>
+        /// Доступность башни
+        /// </summary>
+        /// <returns>Доступна ли башня</returns>
+        public bool IsAvailable()
+        {
+            if (requiredUpgrade)
+            {
+                return requiredUpgradeLevel <= Upgrades.GetUpgradeLevel(requiredUpgrade);
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// В какие башни можно апгрейдить эту башню
+        /// </summary>
+        public TowerAsset[] m_UpgradesTo;
     }
 }

@@ -100,7 +100,7 @@ namespace SpaceShooter
         /// <summary>
         /// Звуки корабля (стрельбы)
         /// </summary>
-        [HideInInspector] public new AudioSource m_Audio;
+        [HideInInspector] public AudioSource m_Audio;
 
         [Header("DeathEffect")]
         /// <summary>

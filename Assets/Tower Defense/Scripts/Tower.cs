@@ -70,6 +70,7 @@ namespace TowerDefense
             {
                 turret.AssignLoadout(asset.turret);
             }
+            GetComponentInChildren<BuildSite>().SetBuildableTowers(asset.m_UpgradesTo);
         }
 
 #if UNITY_EDITOR
