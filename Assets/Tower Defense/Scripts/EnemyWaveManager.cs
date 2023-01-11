@@ -9,6 +9,11 @@ namespace TowerDefense
     public class EnemyWaveManager : MonoBehaviour
     {
         /// <summary>
+        /// Действие при спавне врага
+        /// </summary>
+        public static event Action<Enemy> OnEnemySpawn;
+
+        /// <summary>
         /// Пути движения
         /// </summary>
         [SerializeField] private Path[] m_Paths;
@@ -54,6 +59,7 @@ namespace TowerDefense
                         enemy.Use(asset);
                         enemy.OnEnd += RecordEnemyDead;
                         m_ActiveEnemyCount++;
+                        OnEnemySpawn?.Invoke(enemy);
                     }
                 }
                 else
