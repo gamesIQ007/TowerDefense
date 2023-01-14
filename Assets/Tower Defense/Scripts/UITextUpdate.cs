@@ -21,8 +21,14 @@ namespace TowerDefense
             /// <summary>
             /// Жизнь
             /// </summary>
-            Life
+            Life,
+
+            /// <summary>
+            /// Мана
+            /// </summary>
+            Mana
         }
+
         /// <summary>
         /// Источник обновления
         /// </summary>
@@ -48,6 +54,9 @@ namespace TowerDefense
                 case UpdateSource.Life:
                     TDPlayer.Instance.LifeUpdateSubscription(UpdateText);
                     break;
+                case UpdateSource.Mana:
+                    TDPlayer.Instance.ManaUpdateSubscription(UpdateText);
+                    break;
             }
         }
 
@@ -60,6 +69,9 @@ namespace TowerDefense
                     break;
                 case UpdateSource.Life:
                     TDPlayer.Instance.LifeUpdateUnsubscribe(UpdateText);
+                    break;
+                case UpdateSource.Mana:
+                    TDPlayer.Instance.ManaUpdateUnsubscribe(UpdateText);
                     break;
             }
         }

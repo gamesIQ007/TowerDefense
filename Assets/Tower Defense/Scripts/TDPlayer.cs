@@ -54,6 +54,37 @@ namespace TowerDefense
         public int Gold => m_Gold;
 
         /// <summary>
+        /// Максимальное количество маны
+        /// </summary>
+        [SerializeField] private float m_MaxMana;
+
+        /// <summary>
+        /// Мана
+        /// </summary>
+        private float m_Mana;
+        public float Mana => m_Mana;
+
+        /// <summary>
+        /// Скорость восстановления маны
+        /// </summary>
+        [SerializeField] private float m_ManaRestoreSpeed = 0;
+
+        /// <summary>
+        /// Системное событие на изменение маны
+        /// </summary>
+        private event Action<int> OnManaUpdate;
+        public void ManaUpdateSubscription(Action<int> action)
+        {
+            OnManaUpdate += action;
+            action((int)Instance.Mana);
+        }
+        public void ManaUpdateUnsubscribe(Action<int> action)
+        {
+            OnManaUpdate -= action;
+            action((int)Instance.Mana);
+        }
+
+        /// <summary>
         /// Изменить количество золота
         /// </summary>
         /// <param name="gold">Золото</param>
@@ -85,6 +116,31 @@ namespace TowerDefense
             base.Awake();
             int hpUpgrade = (int) (Upgrades.GetUpgradeLevel(m_HealthUpgrade) * Upgrades.GetUpgradeModifier(m_HealthUpgrade));
             TakeDamage(-hpUpgrade);
+            m_Mana = m_MaxMana;
+        }
+
+        private void Update()
+        {
+            // Так не сойдёт, надо выдумать чего-нить, чтоб мана не слала обновления каждый кадр
+            if (m_Mana < m_MaxMana)
+            {
+                m_Mana += m_ManaRestoreSpeed * Time.deltaTime;
+                if (m_Mana > m_MaxMana)
+                {
+                    m_Mana = m_MaxMana;
+                }
+                OnManaUpdate((int)m_Mana);
+            }
+        }
+
+        /// <summary>
+        /// Изменить количество маны
+        /// </summary>
+        /// <param name="mana">Мана</param>
+        public void ReduceMana(int mana)
+        {
+            m_Mana -= mana;
+            OnManaUpdate((int)m_Mana);
         }
 
         /// <summary>
