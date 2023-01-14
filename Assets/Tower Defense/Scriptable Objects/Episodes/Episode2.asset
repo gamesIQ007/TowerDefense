@@ -15,4 +15,5 @@ MonoBehaviour:
   m_EpisodeName: Episode 2
   m_Levels:
   - Level 2
+  - Win
   m_PreviewImage: {fileID: 0}

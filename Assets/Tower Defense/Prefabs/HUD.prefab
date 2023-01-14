@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 638a6c2cb345d154189b759d9a84fac3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5b9d9022a1a95c419e4e68e0e616f9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -738,15 +738,15 @@ MonoBehaviour:
   m_TargetingCircle: {fileID: 8899613883887595058}
   m_FireAbilityPanel: {fileID: 1579500999}
   m_FireButton: {fileID: 1974778229}
-  m_FireCostText: {fileID: 0}
+  m_FireCostText: {fileID: 170805644}
   m_FireAbilityAsset: {fileID: 11400000, guid: 056734b58aef66646a920b4649a03585, type: 2}
   m_TimeAbility:
-    m_Cost: 50
+    m_Cost: 25
     m_Duration: 5
     m_Cooldown: 15
   m_TimeAbilityPanel: {fileID: 735264557}
   m_TimeButton: {fileID: 1993430668}
-  m_TimeCostText: {fileID: 0}
+  m_TimeCostText: {fileID: 623499936}
   m_TimeAbilityAsset: {fileID: 11400000, guid: 82a6b6140310ef74c9d384f85dcccfdd, type: 2}
 --- !u!1 &1218612190
 GameObject:
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34d6703ba7cf6dd469bb0aad4781fccb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7bd98ad9bbb749448e57f1435c3c110, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7f287c9a72c33a4da91d7fd0305a58d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7bd98ad9bbb749448e57f1435c3c110, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1489,6 +1489,7 @@ GameObject:
   - component: {fileID: 2106819754689146570}
   - component: {fileID: 2106819754689146572}
   - component: {fileID: 2106819754689146571}
+  - component: {fileID: 1281422240}
   m_Layer: 5
   m_Name: Lose
   m_TagString: Untagged
@@ -1555,6 +1556,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1281422240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106819754689146569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4907408b5c3d340952a3dd17ca4a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sound: 5
 --- !u!1 &2106819754794300056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1659,7 @@ GameObject:
   - component: {fileID: 2106819754902479420}
   - component: {fileID: 2106819754902479422}
   - component: {fileID: 2106819754902479421}
+  - component: {fileID: 552067852}
   m_Layer: 5
   m_Name: Win
   m_TagString: Untagged
@@ -1711,6 +1726,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &552067852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106819754902479419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4907408b5c3d340952a3dd17ca4a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sound: 4
 --- !u!1 &2106819754936156655
 GameObject:
   m_ObjectHideFlags: 0

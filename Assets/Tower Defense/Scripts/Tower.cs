@@ -23,9 +23,14 @@ namespace TowerDefense
         private Turret[] m_Turrets;
 
         /// <summary>
+        /// ”преждение
+        /// </summary>
+        [SerializeField] private float m_Lead = 0.3f;
+
+        /// <summary>
         /// ÷ель
         /// </summary>
-        private Destructible m_Target;
+        private Rigidbody2D m_Target;
 
         private void Update()
         {
@@ -37,7 +42,7 @@ namespace TowerDefense
                 {
                     foreach (Turret turret in m_Turrets)
                     {
-                        turret.transform.up = targetVector;
+                        turret.transform.up = m_Target.transform.position - turret.transform.position + (Vector3)m_Target.velocity * m_Lead;
                         turret.Fire();
                     }
                 }
@@ -53,7 +58,7 @@ namespace TowerDefense
                 
                 if (enter != null)
                 {
-                    m_Target = enter.transform.root.GetComponent<Destructible>();
+                    m_Target = enter.transform.root.GetComponent<Rigidbody2D>();
                 }
             }
         }

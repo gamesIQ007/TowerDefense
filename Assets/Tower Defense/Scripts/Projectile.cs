@@ -104,6 +104,17 @@ namespace TowerDefense
         /// Время эффекта
         /// </summary>
         [SerializeField] private int m_StateTime;
+        
+        [Header("Sounds")]
+        /// <summary>
+        /// Звук при выстреле
+        /// </summary>
+        [SerializeField] private Sound m_ShotSound = Sound.Arrow;
+
+        /// <summary>
+        /// Звук при попадании
+        /// </summary>
+        [SerializeField] private Sound m_HitSound = Sound.ArrowHit;
 
         #region Unity Events
 
@@ -113,6 +124,8 @@ namespace TowerDefense
             {
                 m_EnemiesInArea = new List<Enemy>();
             }
+
+            m_ShotSound.Play();
         }
 
         private void Update()
@@ -156,6 +169,8 @@ namespace TowerDefense
                 }
 
                 OnProjectileLifeEnd(hit.collider, hit.point);
+
+                m_HitSound.Play();
             }
 
             transform.position += new Vector3(step.x, step.y, 0);

@@ -174,3 +174,5 @@ MonoBehaviour:
   m_Radius: 0
   m_State: 1
   m_StateTime: 2
+  m_ShotSound: 0
+  m_HitSound: 0
