@@ -96,6 +96,8 @@ namespace TowerDefense
         /// <returns>Следующая волна</returns>
         public EnemyWave PrepareNext(Action spawnEnemies)
         {
+            OnWavePrepare?.Invoke(0);
+
             OnWaveReady -= spawnEnemies;
             if (m_NextWave)
             {

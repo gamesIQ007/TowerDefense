@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Sounds
   m_EditorClassIdentifier: 
   m_Sounds:
-  - {fileID: 8300000, guid: f06ed042ef29a654abd304ea0361ad41, type: 3}
   - {fileID: 8300000, guid: 14eea348e65dae543b1f66c2aaa9e8de, type: 3}
   - {fileID: 8300000, guid: 161cb09f9bb752a4a8866f2615a65a41, type: 3}
+  - {fileID: 8300000, guid: ed56aa45ebc91ed43a036c0bf802b8d5, type: 3}
+  - {fileID: 8300000, guid: cfbf827e73e62d3409cbab893d08aa42, type: 3}
+  - {fileID: 8300000, guid: 8fa64571068d10241ab1706e620768ee, type: 3}
+  - {fileID: 8300000, guid: 1ca143f9cc729d248adb83698ba2b80f, type: 3}
+  - {fileID: 8300000, guid: f06ed042ef29a654abd304ea0361ad41, type: 3}
+  - {fileID: 8300000, guid: 78bc2c998f9f735418207e5a289dbce6, type: 3}
+  - {fileID: 8300000, guid: 551a9868a669c8f479f6f11d6e4ccaaf, type: 3}

@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using UnityEngine;
 using SpaceShooter;
 
@@ -12,35 +12,35 @@ namespace TowerDefense
     [RequireComponent(typeof(Destructible))]
 
     /// <summary>
-    /// Враг. Получает настройки из ScriptableObject
+    /// Р’СЂР°Рі. РџРѕР»СѓС‡Р°РµС‚ РЅР°СЃС‚СЂРѕР№РєРё РёР· ScriptableObject
     /// </summary>
     public class Enemy : MonoBehaviour
     {
         /// <summary>
-        /// Перечень типов брони
+        /// РџРµСЂРµС‡РµРЅСЊ С‚РёРїРѕРІ Р±СЂРѕРЅРё
         /// </summary>
         public enum ArmorType
         {
             /// <summary>
-            /// Базовый тип брони
+            /// Р‘Р°Р·РѕРІС‹Р№ С‚РёРї Р±СЂРѕРЅРё
             /// </summary>
             Base = 0,
             /// <summary>
-            /// Магический тип брони
+            /// РњР°РіРёС‡РµСЃРєРёР№ С‚РёРї Р±СЂРѕРЅРё
             /// </summary>
             Magic = 1,
             /// <summary>
-            /// Броня от взрывов
+            /// Р‘СЂРѕРЅСЏ РѕС‚ РІР·СЂС‹РІРѕРІ
             /// </summary>
             Explosion = 2
         }
 
         /// <summary>
-        /// Массив функций на определение урона в зависимости от типов снаряда и брони
+        /// РњР°СЃСЃРёРІ С„СѓРЅРєС†РёР№ РЅР° РѕРїСЂРµРґРµР»РµРЅРёРµ СѓСЂРѕРЅР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїРѕРІ СЃРЅР°СЂСЏРґР° Рё Р±СЂРѕРЅРё
         /// </summary>
         private static Func<int, Projectile.DamageType, int, int>[] ArmorDamageFunctions =
         {
-            // расчёт урона для базовой брони
+            // СЂР°СЃС‡С‘С‚ СѓСЂРѕРЅР° РґР»СЏ Р±Р°Р·РѕРІРѕР№ Р±СЂРѕРЅРё
             (int power, Projectile.DamageType type, int armor) =>
             {
                 switch (type)
@@ -49,7 +49,7 @@ namespace TowerDefense
                     default: return Mathf.Max(power - armor, 1);
                 }
             },
-            // расчёт урона для магической брони
+            // СЂР°СЃС‡С‘С‚ СѓСЂРѕРЅР° РґР»СЏ РјР°РіРёС‡РµСЃРєРѕР№ Р±СЂРѕРЅРё
             (int power, Projectile.DamageType type, int armor) =>
             {
                 if (type == Projectile.DamageType.Base)
@@ -58,11 +58,12 @@ namespace TowerDefense
                 }
                 return Mathf.Max(power - armor, 1);
             },
-            // расчёт урона для брони от взрывов
+            // СЂР°СЃС‡С‘С‚ СѓСЂРѕРЅР° РґР»СЏ Р±СЂРѕРЅРё РѕС‚ РІР·СЂС‹РІРѕРІ
             (int power, Projectile.DamageType type, int armor) =>
             {
                 switch (type)
                 {
+                    case Projectile.DamageType.Base: return Mathf.Max(power - armor / 2, 1);
                     case Projectile.DamageType.Explosion: return Mathf.Max(power - armor, 1);
                     default: return power;
                 }
@@ -70,34 +71,34 @@ namespace TowerDefense
         };
 
         /// <summary>
-        /// Урон
+        /// РЈСЂРѕРЅ
         /// </summary>
         [SerializeField] private int m_Damage;
 
         /// <summary>
-        /// Тип брони
+        /// РўРёРї Р±СЂРѕРЅРё
         /// </summary>
         [SerializeField] private ArmorType m_ArmorType;
 
         /// <summary>
-        /// Броня
+        /// Р‘СЂРѕРЅСЏ
         /// </summary>
         [SerializeField] private int m_Armor;
 
         /// <summary>
-        /// Золото
+        /// Р—РѕР»РѕС‚Рѕ
         /// </summary>
         [SerializeField] private int m_Gold;
 
         private Destructible m_Destructible;
 
         /// <summary>
-        /// Состояние
+        /// РЎРѕСЃС‚РѕСЏРЅРёРµ
         /// </summary>
         private EnemyState m_State;
 
         /// <summary>
-        /// Событие при конце существования врага
+        /// РЎРѕР±С‹С‚РёРµ РїСЂРё РєРѕРЅС†Рµ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РІСЂР°РіР°
         /// </summary>
         public event Action OnEnd;
 
@@ -112,9 +113,9 @@ namespace TowerDefense
         }
 
         /// <summary>
-        /// Применить настройки из ScriptableObject к врагу
+        /// РџСЂРёРјРµРЅРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РёР· ScriptableObject Рє РІСЂР°РіСѓ
         /// </summary>
-        /// <param name="asset">Настройки</param>
+        /// <param name="asset">РќР°СЃС‚СЂРѕР№РєРё</param>
         public void Use(EnemyAsset asset)
         {
             SpriteRenderer sr = transform.GetComponentInChildren<SpriteRenderer>();
@@ -138,7 +139,7 @@ namespace TowerDefense
         }
 
         /// <summary>
-        /// Нанесение урона игроку
+        /// РќР°РЅРµСЃРµРЅРёРµ СѓСЂРѕРЅР° РёРіСЂРѕРєСѓ
         /// </summary>
         public void DamagePlayer()
         {
@@ -146,7 +147,7 @@ namespace TowerDefense
         }
 
         /// <summary>
-        /// Добавление золота игроку
+        /// Р”РѕР±Р°РІР»РµРЅРёРµ Р·РѕР»РѕС‚Р° РёРіСЂРѕРєСѓ
         /// </summary>
         public void GetPlayerGold()
         {
@@ -154,9 +155,9 @@ namespace TowerDefense
         }
 
         /// <summary>
-        /// Получение повреждений
+        /// РџРѕР»СѓС‡РµРЅРёРµ РїРѕРІСЂРµР¶РґРµРЅРёР№
         /// </summary>
-        /// <param name="damage">Урон</param>
+        /// <param name="damage">РЈСЂРѕРЅ</param>
         public void TakeDamage(int damage, Projectile.DamageType damageType)
         {
             m_Destructible.ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, damageType, m_Armor));

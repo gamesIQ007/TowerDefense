@@ -81,6 +81,9 @@ namespace TowerDefense
             DisableAll<Projectile>();
             DisableAll<Tower>();
             DisableAll<UINextWave>();
+            DisableAll<BuildSite>();
+
+            Abilities.Instance.DisableAbilities();
         }
     }
 }

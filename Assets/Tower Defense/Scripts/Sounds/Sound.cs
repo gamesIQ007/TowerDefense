@@ -17,7 +17,9 @@ namespace TowerDefense
         /// <summary>
         /// Фоновая музыка
         /// </summary>
-        BGM = 6
+        BGM = 6,
+        MagicArrow = 7,
+        MagicArrowHit = 8
     }
 
     /// <summary>

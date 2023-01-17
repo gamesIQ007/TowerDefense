@@ -211,5 +211,12 @@ namespace TowerDefense
                 m_TimeButton.interactable = !m_TimeButton.interactable;
             }
         }
+
+        public void DisableAbilities()
+        {
+            m_FireButton.interactable = false;
+            m_TimeButton.interactable = false;
+            enabled = false;
+        }
     }
 }
